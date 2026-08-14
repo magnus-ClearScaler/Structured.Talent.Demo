@@ -95,26 +95,19 @@ export function Founder() {
             <div className="mt-7 space-y-5 text-[1.0625rem] leading-[1.75] text-pretty text-[color:var(--color-body)]">
               <p>
                 It started with numbers, not sales. I grew up in Uelzen in northern
-                Germany and studied statistics, finance, accounting and auditing in
-                Halle, in the former East. Not the obvious launchpad for a sales
-                career, but it left me something I lean on every day. I look for
-                patterns, I test what I think I know, and I treat every word in a
-                cold email as a variable that is either pulling its weight or it
-                isn&rsquo;t.
+                Germany and studied statistics and accounting in Halle, in the
+                former East. Not the obvious launchpad for a sales career, but it
+                left me something I use every day: I look for patterns, and I treat
+                every word in a cold email as a variable that is either pulling its
+                weight or it isn&rsquo;t.
               </p>
               <p>
-                London taught me pace. Then a year in Barcelona, where the country,
-                the language and the buyer were all new at once. The lesson came back
-                the same every time: you cannot translate your way into a new market,
-                you have to understand it.
-              </p>
-              <p>
-                The last seven years have been Dublin, in full-cycle and frontline
-                roles, consistently among the top performers. Twice a company flew me
-                to the US for sales training, sitting in rooms full of American reps
-                working out how to sell into Europe. I was usually the European in the
-                room, which is how I have seen from the inside exactly where a US
-                sales motion breaks when it meets a European buyer.
+                London taught me pace, Barcelona taught me that you cannot translate
+                your way into a market, and the last seven years in Dublin put me in
+                rooms full of American reps working out how to sell into Europe. I
+                was usually the European in the room, which is how I have seen from
+                the inside exactly where a US sales motion breaks when it meets a
+                European buyer.
               </p>
             </div>
 

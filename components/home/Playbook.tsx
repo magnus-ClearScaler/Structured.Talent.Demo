@@ -24,23 +24,6 @@ const contents = [
   "First ninety days, ramp plan",
 ];
 
-const routes = [
-  {
-    tag: "US team · expanding into Europe",
-    title: "Your US playbook won't land in Europe. This one will.",
-    body:
-      "For US SaaS teams opening DACH and EMEA, where the high-energy motion that wins at home reads very differently to a German buyer.",
-    href: site.pages.usPlaybook,
-  },
-  {
-    tag: "European team · scaling across EMEA",
-    title: "What wins at home won't win across EMEA. This will.",
-    body:
-      "For European SaaS teams growing beyond their home market, where every border changes the channel, the cadence and the buyer.",
-    href: site.pages.emeaPlaybook,
-  },
-];
-
 export function Playbook() {
   return (
     <section
@@ -78,29 +61,11 @@ export function Playbook() {
               </span>
             </div>
 
-            <div className="mt-12 space-y-4">
-              {routes.map((r) => (
-                <a
-                  key={r.href}
-                  href={r.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="group block border border-[color:var(--color-line)] bg-[color:var(--color-paper-50)] p-6 transition-colors hover:border-[color:var(--color-gold-500)]/60"
-                >
-                  <p className="font-[family-name:var(--font-mono)] text-[0.6875rem] tracking-[0.12em] text-[color:var(--color-gold-700)] uppercase">
-                    {r.tag}
-                  </p>
-                  <p className="h-section mt-3 text-[1.125rem]">{r.title}</p>
-                  <p className="mt-2 text-[0.875rem] leading-[1.6] text-[color:var(--color-mute)]">
-                    {r.body}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-[0.875rem] font-medium text-[color:var(--color-ink-900)] group-hover:text-[color:var(--color-gold-700)]">
-                    Read the route
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-                  </span>
-                </a>
-              ))}
-            </div>
+            <p className="mt-10 border-l-2 border-[color:var(--color-gold-500)] pl-5 text-[0.9375rem] leading-[1.65] text-[color:var(--color-mute)]">
+              Two routes in: one for US teams opening Europe, one for European
+              teams scaling across EMEA. Both deliver the same fourteen sections,
+              written from scratch.
+            </p>
           </div>
 
           {/* The contents page, set like the document it describes */}

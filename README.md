@@ -8,6 +8,27 @@ Linnecke. Front page only.
 - Stack: Next.js 16 (App Router, Turbopack), Tailwind v4, TypeScript
 - Dev: `npm run dev` on port 3420
 
+## Structure
+
+The page is a fork, not a pitch. Two entirely different people arrive here and
+the current site makes them read each other's copy.
+
+1. **Hero** — the headline, then two doors: *I'm hiring* and *I'm a seller*
+2. **Markets band** — where the roles and the searches actually sit
+3. **For candidates** — markets, what they get, four steps, send-a-CV
+4. **For companies** — the three failure modes, three services, engagement models
+5. **The salary is the small number** — three taps, one number
+6. **Playbook** — the fourteen-section contents, set like the document
+7. **Founder** — the portrait, the story, where the quota was carried
+8. **FAQ** — split by audience
+9. **Close** — the same two doors, plus email, phone and LinkedIn
+
+The seven-slider cost calculator is gone. Sliders put the work on the visitor
+and ask them to have opinions about employer on-costs before they have agreed
+there is a problem. Three tapped choices and one number gets to the same
+argument, and every assumption the sliders exposed is still printed underneath
+as a footnote instead of a task.
+
 ## What it is built from
 
 Every claim, number and destination on the page comes from the client's own

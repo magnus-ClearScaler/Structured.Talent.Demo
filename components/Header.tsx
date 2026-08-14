@@ -6,10 +6,9 @@ import { ArrowRight } from "@/components/Icons";
 import { site } from "@/lib/site";
 
 const nav = [
-  { href: "#approach", label: "Approach" },
-  { href: "#services", label: "Services" },
+  { href: "#candidates", label: "For candidates" },
+  { href: "#companies", label: "For companies" },
   { href: "#playbook", label: "Playbook" },
-  { href: "#cost", label: "The real cost" },
   { href: "#founder", label: "Founder" },
 ];
 

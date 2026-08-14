@@ -1,4 +1,5 @@
 import { site } from "@/lib/site";
+import { faqItems } from "@/components/home/Faq";
 
 /**
  * The audit noted that AI answer engines and Google are both reading this site
@@ -57,6 +58,14 @@ export function StructuredData() {
         name: "Structured Prospecting",
         author: { "@id": `${site.url}/#harm` },
         url: site.book,
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqItems.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
       },
     ],
   };

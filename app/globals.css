@@ -158,8 +158,23 @@ body {
   cursor: pointer;
 }
 
+/* Markets marquee. Four copies of the list, translated by half the track, so
+   the loop lands exactly on copy three and never visibly jumps. */
+.marquee-track {
+  animation: marquee 46s linear infinite;
+}
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-50%, 0, 0); }
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
+}
+
 /* The one entrance animation on the page, below the fold only. */
 @media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
   html { scroll-behavior: auto; }
   .reveal {
     opacity: 1 !important;

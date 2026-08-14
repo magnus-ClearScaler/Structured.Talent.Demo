@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: "Structured Talent · Multilingual sales hiring for DACH & EMEA",
   description:
-    "Multilingual sales talent and the playbook to make them land. Founder-led sales recruitment and GTM advisory for companies scaling into DACH and the wider EMEA market. Dublin based, fifteen years carrying quota across Europe.",
+    "Multilingual sales talent and the playbook to make them land. Founder-led hiring and GTM advisory for companies scaling into DACH and EMEA, and native-language BDR, SDR and AE roles for the people who sell there. Dublin based, fifteen years carrying quota across Europe.",
   keywords: [
     "DACH sales recruitment",
     "multilingual SDR hiring",
