@@ -61,5 +61,7 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon\\.ico|.*\\..*).*)'],
+  /* opengraph-image is left open so link previews still render when the
+     gated demo URL is shared in a message. */
+  matcher: ['/((?!_next/static|_next/image|opengraph-image|favicon\\.ico|.*\\..*).*)'],
 };
