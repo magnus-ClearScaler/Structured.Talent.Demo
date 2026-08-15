@@ -121,8 +121,20 @@ body {
    large cream fields reading as flat CSS colour. */
 .grain {
   background-image:
-    radial-gradient(circle at 18% 12%, rgba(184, 146, 63, 0.055), transparent 42%),
-    radial-gradient(circle at 84% 8%, rgba(169, 154, 120, 0.06), transparent 38%);
+    radial-gradient(circle at 18% 12%, rgba(184, 146, 63, 0.09), transparent 46%),
+    radial-gradient(circle at 84% 6%, rgba(169, 154, 120, 0.1), transparent 42%),
+    radial-gradient(circle at 55% 95%, rgba(184, 146, 63, 0.06), transparent 45%);
+}
+
+/* A hairline rule grid, drawn in CSS. It gives the cream fields a measure and
+   costs nothing to ship. */
+.ruled {
+  background-image: linear-gradient(
+    to right,
+    var(--color-line-soft) 0 1px,
+    transparent 1px 100%
+  );
+  background-size: 25% 100%;
 }
 
 /* Range inputs, restyled so the cost model does not look like a browser form */
@@ -172,9 +184,38 @@ body {
   mask-image: linear-gradient(to right, transparent, #000 9%, #000 91%, transparent);
 }
 
-/* The one entrance animation on the page, below the fold only. */
+/* There is deliberately no scroll-entrance animation. The first version held
+   content at opacity 0 until an IntersectionObserver fired, which meant a slow
+   hydrate showed a screen of empty boxes; the CSS view() timeline that replaced
+   it resolves to an inactive timeline inside the overflow-hidden sections here,
+   so it animated nothing. The page carries its motion in the marquee, the hover
+   lifts and the section contrast instead, and always paints its content. */
+
+/* Cards that lift a little under the cursor. Small, but it is the difference
+   between a page that feels printed and one that feels built. */
+.lift {
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease;
+}
+.lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+/* A ghost country code sitting behind a card's content. */
+.ghost {
+  font-family: var(--font-serif);
+  line-height: 0.78;
+  letter-spacing: -0.04em;
+  color: var(--color-gold-500);
+  opacity: 0.13;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
+  .lift:hover { transform: none; }
   html { scroll-behavior: auto; }
   .reveal {
     opacity: 1 !important;

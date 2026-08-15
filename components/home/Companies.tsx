@@ -1,6 +1,5 @@
 import { Container, Label } from "@/components/ui";
 import { ArrowRight, Check } from "@/components/Icons";
-import { Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site";
 
 const services = [
@@ -87,10 +86,10 @@ export function Companies() {
 
         {/* Three routes, three calendars */}
         <div className="mt-16 grid gap-6 lg:grid-cols-3">
-          {services.map((s, i) => (
-            <Reveal key={s.title} delay={i * 80} className="h-full">
+          {services.map((s) => (
               <article
-                className={`flex h-full flex-col p-8 transition-colors duration-300 ${
+                key={s.title}
+                className={`lift flex h-full flex-col p-8 ${
                   s.featured
                     ? "bg-[color:var(--color-gold-400)]"
                     : "border border-[color:var(--color-line-dark)] bg-[color:var(--color-ink-950)]/60 hover:border-[color:var(--color-gold-400)]/50"
@@ -135,7 +134,6 @@ export function Companies() {
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
                 </a>
               </article>
-            </Reveal>
           ))}
         </div>
 

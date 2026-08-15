@@ -20,7 +20,9 @@ export function MarketsBand() {
         <p className="label text-center">Markets I sold into, and now hire for</p>
       </div>
 
-      <div className="marquee-mask overflow-hidden" aria-hidden="true">
+      {/* Painted fades rather than a mask, so the edges soften in every
+          browser and in every screenshot tool. */}
+      <div className="relative overflow-hidden" aria-hidden="true">
         <div className="marquee-track flex w-max items-center gap-3 sm:gap-4">
           {row.map((m, i) => (
             <span
@@ -31,6 +33,8 @@ export function MarketsBand() {
             </span>
           ))}
         </div>
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-paper-50 to-transparent sm:w-48" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-paper-50 to-transparent sm:w-48" />
       </div>
 
       <ul className="sr-only">

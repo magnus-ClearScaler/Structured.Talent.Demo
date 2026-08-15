@@ -1,6 +1,5 @@
 import { Container, Label } from "@/components/ui";
 import { ArrowRight } from "@/components/Icons";
-import { Reveal } from "@/components/Reveal";
 import { site } from "@/lib/site";
 
 /* The site advertises a fourteen-section custom playbook and names four of the
@@ -69,8 +68,7 @@ export function Playbook() {
           </div>
 
           {/* The contents page, set like the document it describes */}
-          <Reveal>
-            <div className="relative">
+          <div className="relative">
               <div
                 aria-hidden="true"
                 className="absolute -top-3 -right-3 hidden h-full w-full border border-[color:var(--color-line)] lg:block"
@@ -107,8 +105,7 @@ export function Playbook() {
                   from a US template.
                 </p>
               </div>
-            </div>
-          </Reveal>
+          </div>
         </div>
       </Container>
     </section>
