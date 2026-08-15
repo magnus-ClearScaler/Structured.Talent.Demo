@@ -131,15 +131,21 @@ export function Companies() {
           </dl>
         </div>
 
-        <div className="mt-14 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+        {/* Two intents, two calendars. The DACH strategy session is a separate
+            conversation from a live role, and the audit was right that keeping
+            them apart is unusual and worth keeping. */}
+        <div className="mt-14 flex flex-col items-start gap-x-10 gap-y-6 sm:flex-row sm:items-center">
           <Action href={site.booking.hiring} tone="paper">
             Book a hiring call
           </Action>
-          <p className="text-[0.9375rem] text-[color:var(--color-sand-400)]">
-            Thirty minutes, no obligation. Fees depend on the role and are set out
-            in writing before anything starts.
-          </p>
+          <Action href={site.booking.dach} tone="quiet-light">
+            Or a DACH strategy session
+          </Action>
         </div>
+        <p className="mt-6 max-w-[62ch] text-[0.9375rem] leading-[1.7] text-[color:var(--color-sand-400)]">
+          Thirty minutes either way, no obligation. Fees depend on the role and
+          are set out in writing before anything starts.
+        </p>
       </Container>
     </section>
   );
