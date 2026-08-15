@@ -1,163 +1,130 @@
 import Image from "next/image";
-import { Container, Label } from "@/components/ui";
-import { ArrowRight } from "@/components/Icons";
+import { site } from "@/lib/site";
 
-/* The whole page is a fork, so the hero is the fork. Everything that used to
-   crowd this screen — the proof list, the services — now sits inside whichever
-   door you pick, which is what makes the rest of the page feel short. */
-const doors = [
+/* The fork, set as a contents page. Two entries, roman numerals, leaders and a
+   rule between them — the device a book uses, doing the job a pair of hero
+   buttons was doing badly. */
+const entries = [
   {
-    href: "#companies",
-    kicker: "I'm hiring",
-    title: "Build a sales team that sells in Europe",
-    body: "Native-fluency SDRs, BDRs and AEs across DACH and EMEA, screened by someone who carried the quota there.",
-    cta: "For companies",
+    numeral: "I",
+    href: "#candidates",
+    title: "For candidates",
+    line: "Native-language sales roles across Ireland, the UK, Spain and the German-speaking market.",
   },
   {
-    href: "#candidates",
-    kicker: "I'm a seller",
-    title: "Find a role where your language is the point",
-    body: "Sales roles across Ireland, the UK, Spain and the German-speaking market, where native fluency is the job and not a bonus line.",
-    cta: "For candidates",
+    numeral: "II",
+    href: "#companies",
+    title: "For companies",
+    line: "Sales hiring, a custom playbook, or an embedded recruiter for DACH and EMEA.",
   },
 ];
 
-const credentials = [
-  "15 years selling across EMEA",
-  "Native German speaker",
-  "Amazon #1 · Telemarketing 2026",
+const standing = [
+  "Fifteen years carrying quota across EMEA",
+  "Native German",
+  "Author, Structured Prospecting",
   "WRC licence EA 5660",
 ];
 
 export function Hero() {
   return (
-    <section id="top" className="grain relative overflow-hidden border-b border-[color:var(--color-line)]">
-      {/* A quarter-width rule grid behind the whole hero, faded out at the
-          foot so it reads as paper and not as a wireframe. */}
-      <div
-        aria-hidden="true"
-        className="ruled pointer-events-none absolute inset-0 hidden opacity-70 [mask-image:linear-gradient(to_bottom,#000,transparent_78%)] lg:block"
-      />
+    <section id="top" className="paper rule-b relative">
+      <div className="mx-auto grid w-full max-w-[110rem] lg:grid-cols-[1.25fr_0.75fr]">
+        {/* Left: the statement */}
+        <div className="px-6 pt-14 pb-12 sm:px-10 sm:pt-20 lg:py-24 lg:pr-16 lg:pl-[max(2.5rem,calc((100vw-82rem)/2+1.5rem))]">
+          <p className="folio text-[color:var(--color-gold-700)]">
+            Dublin · Est. 2026 · No. 01
+          </p>
 
-      <Container className="relative">
-        <div className="grid items-center gap-12 pt-14 pb-14 sm:pt-20 lg:grid-cols-[1.12fr_0.88fr] lg:gap-16 lg:pt-24">
-          <div>
-            <Label>GTM growth partner · DACH &amp; EMEA</Label>
+          <h1 className="display mt-8 max-w-[13ch] text-[clamp(2.75rem,7.4vw,5.75rem)]">
+            The multilingual sales talent to win in Europe.
+          </h1>
+          <p className="display accent mt-3 max-w-[15ch] text-[clamp(2rem,5.2vw,4rem)]">
+            And the playbook to make them land.
+          </p>
 
-            <h1 className="h-display mt-6 text-[clamp(2.4rem,5.4vw,4rem)] text-balance">
-              The multilingual sales talent to win in Europe.{" "}
-              <span className="accent">And the playbook to make them land.</span>
-            </h1>
+          <p className="mt-10 max-w-[46ch] text-[1.0625rem] leading-[1.8] text-pretty text-[color:var(--color-body)] sm:text-[1.1875rem]">
+            Fifteen years carrying quota in Germany, the UK, Spain and Ireland,
+            now spent on both sides of the same problem: finding sellers who can
+            close in the language, and writing the playbook that makes them
+            productive once they arrive.
+          </p>
 
-            <p className="mt-7 max-w-xl text-[1.0625rem] leading-[1.7] text-pretty text-[color:var(--color-body)] sm:text-[1.125rem]">
-              Fifteen years carrying quota in Germany, the UK, Spain and Ireland,
-              now spent on both sides of the same problem: finding sellers who
-              can close in the language, and writing the playbook that makes them
-              productive once they arrive.
-            </p>
-          </div>
-
-          {/* The founder, at the top, because this is a one-person business and
-              the person is the product. */}
-          <figure className="mx-auto w-full max-w-[24rem] lg:mx-0 lg:max-w-none">
-            <div className="relative">
-              <span
-                aria-hidden="true"
-                className="absolute -top-4 -right-4 hidden h-full w-full border border-[color:var(--color-gold-500)]/40 sm:block"
-              />
-              <Image
-                src="/harm-linnecke.webp"
-                alt="Harm Linnecke, founder of Structured Talent, in Dublin"
-                width={819}
-                height={1024}
-                sizes="(min-width: 1024px) 28rem, (min-width: 640px) 24rem, 100vw"
-                priority
-                className="relative w-full object-cover"
-              />
-            </div>
-            <figcaption className="mt-5 border-l-2 border-[color:var(--color-gold-500)] pl-4">
-              <span className="block font-[family-name:var(--font-serif)] text-[1.0625rem] text-[color:var(--color-ink-900)]">
-                Harm Linnecke
-              </span>
-              <span className="mt-0.5 block font-[family-name:var(--font-mono)] text-[0.6875rem] tracking-[0.1em] text-[color:var(--color-mute)] uppercase">
-                Every search and every playbook, run by me
-              </span>
-            </figcaption>
-          </figure>
+          {/* Contents */}
+          <nav aria-label="Where to start" className="mt-14 max-w-[46rem]">
+            <p className="folio text-[color:var(--color-mute)]">Where to start</p>
+            <ul className="mt-5 rule-t">
+              {entries.map((e) => (
+                <li key={e.href} className="rule-b">
+                  <a
+                    href={e.href}
+                    className="group grid items-baseline gap-x-6 gap-y-2 py-6 sm:grid-cols-[2.5rem_1fr_auto]"
+                  >
+                    <span className="numeral text-[1.25rem]">{e.numeral}</span>
+                    <span>
+                      <span className="title block text-[1.5rem] transition-colors group-hover:text-[color:var(--color-gold-700)] sm:text-[1.75rem]">
+                        {e.title}
+                      </span>
+                      <span className="mt-1.5 block max-w-[46ch] text-[0.9375rem] leading-[1.6] text-[color:var(--color-mute)]">
+                        {e.line}
+                      </span>
+                    </span>
+                    <span className="folio hidden self-center text-[color:var(--color-gold-700)] transition-transform duration-200 group-hover:translate-x-1 sm:block">
+                      Read →
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
-        {/* The fork */}
-        <div className="grid gap-5 pb-16 sm:pb-20 lg:grid-cols-2 lg:gap-6">
-          {doors.map((d, i) => (
-            <a
-              key={d.href}
-              href={d.href}
-              className={`lift group relative flex flex-col justify-between overflow-hidden p-8 sm:p-10 ${
-                i === 0
-                  ? "bg-[color:var(--color-ink-900)] hover:bg-[color:var(--color-ink-800)]"
-                  : "border border-[color:var(--color-ink-900)]/15 bg-[color:var(--color-paper-50)] hover:border-[color:var(--color-gold-500)]"
-              }`}
-            >
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  background:
-                    i === 0
-                      ? "radial-gradient(120% 90% at 90% 0%, rgba(201,162,39,0.2), transparent 62%)"
-                      : "radial-gradient(120% 90% at 90% 0%, rgba(201,162,39,0.09), transparent 62%)",
-                }}
-              />
+        {/* Right: the founder, bleeding off the edge of the page */}
+        <figure className="relative min-h-[22rem] lg:min-h-full">
+          <Image
+            src="/harm-linnecke.webp"
+            alt="Harm Linnecke, founder of Structured Talent, in Dublin"
+            fill
+            sizes="(min-width: 1024px) 38vw, 100vw"
+            priority
+            className="object-cover object-[50%_22%] grayscale-[0.12] contrast-[1.02]"
+          />
+          {/* A wash of the paper colour into the left edge, so the photograph
+              joins the page rather than sitting in a frame on top of it. */}
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 hidden bg-gradient-to-r from-paper-50 via-transparent to-transparent lg:block"
+          />
+          <figcaption className="absolute right-0 bottom-0 left-0 bg-[color:var(--color-ink-900)]/86 px-6 py-4 sm:px-8">
+            <span className="block font-[family-name:var(--font-serif)] text-[1.0625rem] text-[color:var(--color-paper-50)]">
+              Harm Linnecke
+            </span>
+            <span className="meta-light mt-0.5 block">
+              Every search and every playbook, run by me
+            </span>
+          </figcaption>
+        </figure>
+      </div>
 
-              <span className="relative">
-                <span className={i === 0 ? "label-light" : "label"}>{d.kicker}</span>
-                <span
-                  className={`h-section mt-5 block text-[clamp(1.5rem,2.6vw,2rem)] text-balance ${
-                    i === 0 ? "text-[color:var(--color-paper-50)]" : ""
-                  }`}
-                >
-                  {d.title}
-                </span>
-                <span
-                  className={`mt-4 block max-w-md text-[0.9375rem] leading-[1.7] ${
-                    i === 0
-                      ? "text-[color:var(--color-sand-200)]"
-                      : "text-[color:var(--color-body)]"
-                  }`}
-                >
-                  {d.body}
-                </span>
-              </span>
-
-              <span
-                className={`relative mt-10 inline-flex items-center gap-2.5 text-[0.9375rem] font-medium ${
-                  i === 0
-                    ? "text-[color:var(--color-gold-300)]"
-                    : "text-[color:var(--color-ink-900)]"
-                }`}
-              >
-                {d.cta}
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1.5" />
-              </span>
-            </a>
-          ))}
-        </div>
-      </Container>
-
-      <div className="relative border-t border-[color:var(--color-line)] bg-[color:var(--color-paper-100)]/70">
-        <Container>
-          <ul className="grid divide-y divide-[color:var(--color-line)] sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
-            {credentials.map((c) => (
+      {/* Standing credentials, set as a single ruled line */}
+      <div className="rule-t bg-[color:var(--color-paper-100)]/60">
+        <div className="mx-auto w-full max-w-[82rem] px-6 sm:px-10">
+          <ul className="flex flex-col divide-y divide-[color:var(--color-rule-soft)] lg:flex-row lg:divide-x lg:divide-y-0">
+            {standing.map((s) => (
               <li
-                key={c}
-                className="py-4 font-[family-name:var(--font-mono)] text-[0.6875rem] tracking-[0.12em] text-[color:var(--color-ink-700)] uppercase lg:px-6 lg:first:pl-0 lg:last:pr-0"
+                key={s}
+                className="py-3.5 text-[0.9375rem] text-[color:var(--color-body)] lg:px-7 lg:first:pl-0 lg:last:pr-0"
               >
-                {c}
+                {s}
               </li>
             ))}
           </ul>
-        </Container>
+        </div>
       </div>
+
+      <a href={site.booking.strategy} className="sr-only">
+        Book a strategy call
+      </a>
     </section>
   );
 }

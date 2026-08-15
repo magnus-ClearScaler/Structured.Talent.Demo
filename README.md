@@ -8,20 +8,42 @@ Linnecke. Front page only.
 - Stack: Next.js 16 (App Router, Turbopack), Tailwind v4, TypeScript
 - Dev: `npm run dev` on port 3420
 
+## The design
+
+The page is set as a printed field manual, which is the one metaphor this
+business has actually earned: it is called Structured Talent, the founder wrote
+a book, and the product is a playbook.
+
+- **Chapters, not sections.** Roman numerals hung in the margin, a running head
+  and a rule at each opening.
+- **One reading face.** Newsreader sets the display *and* the body. Serif body
+  copy is the single biggest difference between a document and a landing page.
+- **Mono earns three jobs only:** folios, numerals and small print. It is not a
+  coloured eyebrow above every heading.
+- **Rules instead of boxes.** Almost nothing on the page is a bordered card.
+  The gazetteer, the services, the steps, the ledger and the FAQ are all ruled
+  lists with hanging labels.
+- **Two grounds, one metal.** Paper and ink carry the page; gold appears as a
+  hairline, a numeral and an italic clause, never as a filled band.
+- **No radial glows, no pricing-table "most popular" card, no icon bullets.**
+  Those are the tells that made the earlier draft read as generated.
+
 ## Structure
 
 The page is a fork, not a pitch. Two entirely different people arrive here and
 the current site makes them read each other's copy.
 
-1. **Hero** — the headline, then two doors: *I'm hiring* and *I'm a seller*
-2. **Markets band** — where the roles and the searches actually sit
-3. **For candidates** — markets, what they get, four steps, send-a-CV
-4. **For companies** — the three failure modes, three services, engagement models
-5. **The salary is the small number** — three taps, one number
-6. **Playbook** — the fourteen-section contents, set like the document
-7. **Founder** — the portrait, the story, where the quota was carried
-8. **FAQ** — split by audience
-9. **Close** — the same two doors, plus email, phone and LinkedIn
+- **Masthead** — wordmark, standing line, a contents row. It does not follow you down the page.
+- **Hero** — the statement, the founder bleeding off the right edge, and the fork set as a contents page
+- **Markets** — a drifting line of the markets he sold into and now hires for
+- **I. For candidates** — a gazetteer of markets, what they get, four steps on ink
+- **II. For companies** — three failure modes, three services, engagement models
+- **An aside** — *The salary is the small number*: three taps, one number
+- **III. The playbook** — the fourteen-section contents, set the way the document sets it
+- **IV. The founder** — the story with a drop cap, the record beside it
+- **V. Questions** — split by audience
+- **VI. Start a conversation** — the same two doors, then email, phone and LinkedIn
+- **Colophon** — licence, city, year
 
 The seven-slider cost calculator is gone. Sliders put the work on the visitor
 and ask them to have opinions about employer on-costs before they have agreed
@@ -58,10 +80,13 @@ rebuild works under, not something it gets to spend.
 The audit told them to protect the speed score, so:
 
 - Static prerender, no data fetching, no analytics scripts
-- Three client components only: the header menu, the cost model, and the
-  scroll reveal
+- Two client components only: the masthead menu and the cost funnel
 - Two images, both WebP, 37 KB and 14 KB
 - No icon package, no animation library, no UI kit
+- No scroll-entrance animation. The observer version left empty boxes on a slow
+  hydrate, and the CSS `view()` timeline that replaced it resolves to an
+  inactive timeline inside the overflow-hidden sections, so it animated nothing.
+  The page always paints its content.
 
 ## Needs the client's input before going live
 

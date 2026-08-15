@@ -1,24 +1,19 @@
 import type { Metadata } from "next";
-import { Inter, Newsreader, IBM_Plex_Mono } from "next/font/google";
+import { Newsreader, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { site } from "@/lib/site";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-/* The live site's voice is an editorial serif with a gold italic clause.
-   Newsreader keeps that voice and brings a genuinely good italic with it. */
+/* One reading face for the whole page, display and body both. Newsreader was
+   drawn for screen text, so it holds up at 17px, and setting the body in it is
+   the difference between a document and a landing page. */
 const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500"],
+  weight: ["300", "400", "500"],
   style: ["normal", "italic"],
 });
 
@@ -74,7 +69,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${newsreader.variable} ${plexMono.variable} h-full`}
+      className={`${newsreader.variable} ${plexMono.variable} h-full`}
       data-scroll-behavior="smooth"
     >
       <body className="flex min-h-full flex-col">

@@ -1,31 +1,32 @@
-import { Container, SectionHead, Label } from "@/components/ui";
-import { ArrowRight, Check } from "@/components/Icons";
+import { Chapter, Container, Action } from "@/components/ui";
 import { site } from "@/lib/site";
 
 /* Country level rather than city level, because that is what he actually
-   recruits into. The cities are named underneath as the hubs they are, and the
-   country code sits behind each card as the only ornament the section needs. */
+   recruits into. Set as a gazetteer: name, hub, one line, a rule. No cards. */
 const markets = [
-  { code: "IE", place: "Ireland", hub: "Dublin", note: "EMEA hubs for US SaaS, hiring in most European languages." },
-  { code: "UK", place: "United Kingdom", hub: "London", note: "Fast markets, full-cycle roles, the pace to learn in." },
-  { code: "ES", place: "Spain", hub: "Barcelona · Madrid", note: "Multilingual sales floors selling across the continent." },
-  { code: "DE", place: "Germany", hub: "Berlin · Munich", note: "The market where speaking it natively decides the deal." },
-  { code: "AT", place: "Austria & Switzerland", hub: "Vienna · Zurich", note: "DACH proper, where directness and proof win." },
-  { code: "US", place: "United States", hub: "EMEA-facing", note: "US companies opening Europe and hiring for it locally." },
+  { place: "Ireland", hub: "Dublin", note: "EMEA hubs for US SaaS, hiring in most European languages." },
+  { place: "United Kingdom", hub: "London", note: "Fast markets, full-cycle roles, the pace to learn in." },
+  { place: "Spain", hub: "Barcelona · Madrid", note: "Multilingual sales floors selling across the continent." },
+  { place: "Germany", hub: "Berlin · Munich", note: "Where speaking it natively decides the deal." },
+  { place: "Austria & Switzerland", hub: "Vienna · Zurich", note: "DACH proper, where directness and proof win." },
+  { place: "United States", hub: "EMEA-facing", note: "US companies opening Europe, hiring for it locally." },
 ];
 
 const promises = [
   {
+    label: "The assessment",
     t: "You are read by a seller, not a keyword filter",
     d: "Fifteen years of carrying quota means I can tell from one call whether you can open in German and hold a discovery. That is the assessment. Not how your CV is formatted.",
   },
   {
+    label: "The process",
     t: "Honest briefs, and real feedback either way",
     d: "You get the actual role, the actual number, the actual manager. If it is a no, you hear why within a day. Nobody goes quiet on you here.",
   },
   {
-    t: "Roles where your language is the job",
-    d: "BDR, SDR and AE seats where native fluency is the reason you were hired, not a nice-to-have buried at the bottom of the spec.",
+    label: "The roles",
+    t: "Seats where your language is the job",
+    d: "BDR, SDR and AE roles where native fluency is the reason you were hired, not a nice-to-have buried at the bottom of the spec.",
   },
 ];
 
@@ -38,156 +39,115 @@ const steps = [
 
 export function Candidates() {
   return (
-    <section id="candidates" className="border-b border-[color:var(--color-line)]">
-      <Container className="py-20 sm:py-28">
-        <SectionHead
-          label="For candidates"
+    <section id="candidates" className="rule-b">
+      <Container className="pt-20 pb-16 sm:pt-28 sm:pb-20">
+        <Chapter
+          numeral="I"
+          running="Chapter one · For candidates"
           title={
             <>
               Sell in your own language.{" "}
               <span className="accent">Land where you&rsquo;ll actually perform.</span>
             </>
           }
-          intro="Multilingual BDR, SDR and AE roles with startups and scaling IT companies across Europe and the US. Free for you, always: the company pays the fee, never the candidate."
-          align="center"
+          standfirst="Multilingual BDR, SDR and AE roles with startups and scaling IT companies across Europe and the US. Free for you, always: the company pays the fee, never the candidate."
         />
 
-        {/* Where the roles are */}
-        <ul className="mt-16 grid gap-px border-t border-l border-[color:var(--color-line)] sm:grid-cols-2 lg:grid-cols-3">
+        {/* The gazetteer */}
+        <div className="mt-20 grid gap-x-16 gap-y-0 sm:grid-cols-2">
+          <p className="folio col-span-full mb-4 text-[color:var(--color-mute)]">
+            Where the roles sit
+          </p>
           {markets.map((m) => (
-            <li
-              key={m.place}
-              className="group relative overflow-hidden border-r border-b border-[color:var(--color-line)] bg-[color:var(--color-paper-50)] p-7 transition-colors duration-300 hover:bg-[color:var(--color-paper-100)]/70"
-            >
-              <span
-                aria-hidden="true"
-                className="ghost pointer-events-none absolute -top-2 right-3 text-[5.5rem] transition-opacity duration-300 group-hover:opacity-25"
-              >
-                {m.code}
-              </span>
-              <p className="relative font-[family-name:var(--font-mono)] text-[0.6875rem] tracking-[0.14em] text-[color:var(--color-gold-700)] uppercase">
-                {m.hub}
-              </p>
-              <p className="h-section relative mt-3 text-[1.5rem]">{m.place}</p>
-              <p className="relative mt-3 max-w-[22rem] text-[0.875rem] leading-[1.6] text-[color:var(--color-mute)]">
+            <div key={m.place} className="rule-t py-6">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
+                <h3 className="title text-[1.625rem]">{m.place}</h3>
+                <span className="meta">{m.hub}</span>
+              </div>
+              <p className="mt-2 max-w-[44ch] text-[0.9375rem] leading-[1.6] text-[color:var(--color-mute)]">
                 {m.note}
               </p>
-            </li>
+            </div>
           ))}
-        </ul>
+          <div className="rule-t col-span-full" />
+        </div>
 
-        {/* What you get */}
-        <div className="mt-20 grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+        {/* What you get, as running entries with hanging labels */}
+        <div className="mt-24 grid gap-x-16 gap-y-10 lg:grid-cols-[0.8fr_1.2fr]">
           <div>
-            <Label>What you get from me</Label>
-            <h3 className="h-section mt-5 text-[clamp(1.6rem,3vw,2.25rem)] text-balance">
-              A recruiter who has sat in the seat you&rsquo;re applying for.
+            <h3 className="title mark max-w-[16ch] text-[clamp(1.6rem,3vw,2.25rem)]">
+              A recruiter who has sat in the seat you&rsquo;re applying for
             </h3>
-            <p className="mt-5 text-[0.9375rem] leading-[1.7] text-[color:var(--color-body)]">
+            <p className="mt-7 max-w-[38ch] text-[1.0625rem] leading-[1.75] text-[color:var(--color-body)]">
               The best sales teams I have worked in pulled from every language
               and background they could find. I hire the same way.
             </p>
           </div>
 
-          <ul className="space-y-5">
+          <dl>
             {promises.map((p) => (
-              <li key={p.t} className="flex gap-5 border-b border-[color:var(--color-line)] pb-5">
-                <Check className="mt-1 h-5 w-5 shrink-0 text-[color:var(--color-gold-600)]" />
-                <div>
-                  <p className="h-section text-[1.125rem]">{p.t}</p>
-                  <p className="mt-2 text-[0.9375rem] leading-[1.65] text-pretty text-[color:var(--color-body)]">
+              <div
+                key={p.t}
+                className="rule-t grid gap-x-10 gap-y-2 py-7 sm:grid-cols-[9rem_1fr]"
+              >
+                <dt className="smallcaps">{p.label}</dt>
+                <dd>
+                  <p className="title text-[1.25rem]">{p.t}</p>
+                  <p className="mt-2.5 max-w-[54ch] text-[1rem] leading-[1.7] text-pretty text-[color:var(--color-body)]">
                     {p.d}
                   </p>
-                </div>
-              </li>
+                </dd>
+              </div>
             ))}
-          </ul>
+            <div className="rule-t" />
+          </dl>
         </div>
       </Container>
 
-      {/* Four steps, on ink, so the long cream stretch has a floor to it */}
-      <div className="relative overflow-hidden bg-[color:var(--color-ink-900)]">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(70% 70% at 15% 0%, rgba(201,162,39,0.16), transparent 60%)",
-          }}
-        />
-        <Container className="relative py-16 sm:py-20">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <Label tone="light">How it works</Label>
-              <h3 className="h-section mt-4 text-[clamp(1.5rem,3vw,2.25rem)] text-[color:var(--color-paper-50)]">
-                Four steps, and a person at every one.
-              </h3>
-            </div>
-            <a
-              href={site.pages.candidates}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="group inline-flex shrink-0 items-center gap-2.5 text-[0.9375rem] font-medium text-[color:var(--color-gold-300)]"
-            >
-              Start at step one
-              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-            </a>
+      {/* The four steps, on ink, as a single ruled sequence */}
+      <div className="bg-[color:var(--color-ink-900)]">
+        <Container className="py-16 sm:py-20">
+          <div className="flex flex-wrap items-end justify-between gap-6 rule-b-dark pb-5">
+            <h3 className="title text-[clamp(1.5rem,3vw,2.125rem)] text-[color:var(--color-paper-50)]">
+              Four steps, and a person at every one.
+            </h3>
+            <span className="folio text-[color:var(--color-sand-400)]">
+              From CV to first day
+            </span>
           </div>
 
-          <ol className="mt-12 grid gap-px border-t border-l border-[color:var(--color-line-dark)] sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-4">
             {steps.map((s) => (
               <li
                 key={s.n}
-                className="h-full border-r border-b border-[color:var(--color-line-dark)] p-7"
+                className="rule-b-dark grid items-baseline gap-x-10 gap-y-2 py-7 sm:grid-cols-[4rem_16rem_1fr]"
               >
-                <span className="num block text-[2.5rem] leading-none text-[color:var(--color-gold-400)]/45">
+                <span className="numeral tnum text-[1.5rem] text-[color:var(--color-gold-400)]">
                   {s.n}
                 </span>
-                <p className="h-section mt-4 text-[1.125rem] text-[color:var(--color-paper-50)]">
+                <span className="title text-[1.375rem] text-[color:var(--color-paper-50)]">
                   {s.t}
-                </p>
-                <p className="mt-2.5 text-[0.875rem] leading-[1.65] text-[color:var(--color-sand-300)]">
+                </span>
+                <span className="max-w-[52ch] text-[1rem] leading-[1.7] text-[color:var(--color-sand-300)]">
                   {s.d}
-                </p>
+                </span>
               </li>
             ))}
           </ol>
-        </Container>
-      </div>
 
-      {/* Candidate CTA, on gold. The only full band of it on the page, which is
-          what makes it read as the end of the candidate journey rather than
-          another card. */}
-      <div className="bg-[color:var(--color-gold-400)]">
-        <Container className="py-14 sm:py-16">
-          <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-center">
-            <div className="max-w-xl">
-              <p className="h-section text-[clamp(1.5rem,2.8vw,2rem)] text-balance text-[color:var(--color-ink-950)]">
-                Send your CV. You&rsquo;ll hear back from a person, within a day.
-              </p>
-              <p className="mt-3 text-[0.9375rem] leading-[1.65] text-[color:var(--color-ink-900)]/80">
-                Know a great seller instead? Refer them. If they are placed and
-                stay through the guarantee period, there is €500 in it for you.
-              </p>
-            </div>
-            <div className="flex w-full shrink-0 flex-col gap-3 sm:w-auto sm:flex-row">
-              <a
-                href={site.pages.candidates}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="group inline-flex items-center justify-center gap-2.5 bg-[color:var(--color-ink-950)] px-7 py-4 text-[0.9375rem] font-medium text-[color:var(--color-paper-50)] transition-colors hover:bg-[color:var(--color-ink-800)]"
-              >
+          <div className="mt-12 flex flex-col items-start gap-8 sm:flex-row sm:items-end sm:justify-between">
+            <p className="max-w-[46ch] text-[1.0625rem] leading-[1.75] text-[color:var(--color-sand-200)]">
+              Send your CV and you will hear back from a person within a business
+              day. Know a great seller instead? Refer them, and there is €500 in
+              it for you once they are placed and through the guarantee period.
+            </p>
+            <div className="flex shrink-0 flex-col gap-5 sm:flex-row sm:items-center">
+              <Action href={site.pages.candidates} tone="paper">
                 Send your CV
-                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </a>
-              <a
-                href={site.pages.candidates}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="inline-flex items-center justify-center gap-2.5 border border-[color:var(--color-ink-950)]/35 px-7 py-4 text-[0.9375rem] font-medium text-[color:var(--color-ink-950)] transition-colors hover:border-[color:var(--color-ink-950)]"
-              >
+              </Action>
+              <Action href={site.pages.candidates} tone="quiet-light">
                 Refer someone · €500
-              </a>
+              </Action>
             </div>
           </div>
         </Container>

@@ -1,5 +1,4 @@
 import { Container } from "@/components/ui";
-import { LinkedIn } from "@/components/Icons";
 import { Wordmark } from "@/components/Header";
 import { site } from "@/lib/site";
 
@@ -27,40 +26,38 @@ const columns = [
     links: [
       { label: site.email, href: `mailto:${site.email}` },
       { label: site.phone, href: site.phoneHref },
-      { label: "Book a strategy call", href: site.booking.strategy },
+      { label: "Book a call", href: site.booking.strategy },
       { label: "LinkedIn", href: site.linkedin },
     ],
   },
 ];
 
+/* A colophon rather than a footer: who made it, where, under what licence. */
 export function Footer() {
   return (
     <footer className="bg-[color:var(--color-ink-950)] pt-16 pb-10">
       <Container>
-        <div className="grid gap-12 border-b border-[color:var(--color-line-dark)] pb-12 lg:grid-cols-[1.3fr_2fr]">
-          <div className="max-w-sm">
+        <div className="rule-b-dark grid gap-12 pb-12 lg:grid-cols-[1.2fr_2fr]">
+          <div className="max-w-[38ch]">
             <Wordmark tone="light" />
-            <p className="mt-5 text-[0.9375rem] leading-[1.7] text-[color:var(--color-sand-300)]">
-              Multilingual sales recruitment, fractional recruiting and GTM advisory
-              for companies scaling into DACH and the wider EMEA market.
+            <p className="mt-6 text-[1rem] leading-[1.75] text-[color:var(--color-sand-300)]">
+              Multilingual sales recruitment, fractional recruiting and GTM
+              advisory for companies scaling into DACH and the wider EMEA market.
             </p>
             <a
               href={site.linkedin}
               target="_blank"
               rel="noreferrer noopener"
-              className="mt-6 inline-flex items-center gap-2.5 border border-[color:var(--color-line-dark)] px-4 py-2.5 text-[0.8125rem] text-[color:var(--color-sand-200)] transition-colors hover:border-[color:var(--color-gold-400)]/60 hover:text-[color:var(--color-gold-300)]"
+              className="mt-6 inline-block border-b border-[color:var(--color-gold-400)]/60 pb-1 text-[0.9375rem] text-[color:var(--color-sand-200)] transition-colors hover:border-[color:var(--color-paper-50)] hover:text-[color:var(--color-paper-50)]"
             >
-              <LinkedIn className="h-3.5 w-3.5" />
-              Follow the writing on LinkedIn
+              Follow the writing on LinkedIn →
             </a>
           </div>
 
           <div className="grid gap-10 sm:grid-cols-3">
             {columns.map((c) => (
               <div key={c.heading}>
-                <p className="font-[family-name:var(--font-mono)] text-[0.6875rem] tracking-[0.16em] text-[color:var(--color-gold-300)] uppercase">
-                  {c.heading}
-                </p>
+                <p className="folio text-[color:var(--color-gold-300)]">{c.heading}</p>
                 <ul className="mt-5 space-y-3">
                   {c.links.map((l) => (
                     <li key={l.label}>
@@ -69,7 +66,7 @@ export function Footer() {
                         {...(l.href.startsWith("http")
                           ? { target: "_blank", rel: "noreferrer noopener" }
                           : {})}
-                        className="text-[0.875rem] text-[color:var(--color-sand-300)] transition-colors hover:text-[color:var(--color-paper-50)]"
+                        className="text-[0.9375rem] text-[color:var(--color-sand-300)] transition-colors hover:text-[color:var(--color-paper-50)]"
                       >
                         {l.label}
                       </a>
@@ -81,9 +78,9 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 font-[family-name:var(--font-mono)] text-[0.6875rem] tracking-[0.06em] text-[color:var(--color-sand-400)] sm:flex-row sm:items-center sm:justify-between">
-          <p>{site.licence}</p>
-          <p>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="folio text-[color:var(--color-sand-400)]">{site.licence}</p>
+          <p className="folio text-[color:var(--color-sand-400)]">
             © 2026 {site.name} · {site.city}
           </p>
         </div>
