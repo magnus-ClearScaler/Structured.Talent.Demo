@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Chapter, Container } from "@/components/ui";
+import { SectionHead, Container } from "@/components/ui";
 import { site } from "@/lib/site";
 
 /* Every line here is on the client's own about page. It is the strongest proof
@@ -17,15 +17,9 @@ export function Founder() {
   return (
     <section id="founder" className="paper rule-b">
       <Container className="py-20 sm:py-28">
-        <Chapter
-          numeral="IV"
-          running="Chapter four · The founder"
-          title={
-            <>
-              How fifteen years across Europe{" "}
-              <span className="accent">became Structured Talent.</span>
-            </>
-          }
+        <SectionHead
+          label="About Harm"
+          title="How fifteen years across Europe became Structured Talent"
         />
 
         <div className="mt-16 grid gap-x-16 gap-y-14 lg:grid-cols-[1.1fr_0.9fr]">
@@ -33,10 +27,7 @@ export function Founder() {
           <div>
             <div className="max-w-[62ch] space-y-6 text-[1.0625rem] leading-[1.8] text-pretty text-[color:var(--color-body)] sm:text-[1.125rem]">
               <p>
-                <span className="float-left mt-2 mr-3 font-[family-name:var(--font-serif)] text-[3.75rem] leading-[0.72] text-[color:var(--color-ink-900)]">
-                  I
-                </span>
-                t started with numbers, not sales. I grew up in Uelzen in northern
+                It started with numbers, not sales. I grew up in Uelzen in northern
                 Germany and studied statistics and accounting in Halle, in the
                 former East. Not the obvious launchpad for a sales career, but it
                 left me something I use every day: I look for patterns, and I
@@ -53,10 +44,10 @@ export function Founder() {
               </p>
             </div>
 
-            <figure className="mt-12 max-w-[34ch]">
-              <blockquote className="title text-[clamp(1.5rem,3vw,2rem)] text-balance">
-                &ldquo;Every word in a cold email is a variable. My job is to know
-                which ones move the number.&rdquo;
+            <figure className="mt-10 max-w-[38ch] border-l border-[color:var(--color-gold-500)] pl-5">
+              <blockquote className="text-[1.1875rem] leading-[1.6] text-[color:var(--color-body)]">
+                Every word in a cold email is a variable. My job is to know which
+                ones move the number.
               </blockquote>
             </figure>
 
@@ -74,7 +65,7 @@ export function Founder() {
                   <p className="text-[1.0625rem] text-[color:var(--color-ink-900)]">
                     Harm Linnecke
                   </p>
-                  <p className="meta">Dublin 8 · DACH &amp; EMEA</p>
+                  <p className="label">Dublin 8 · DACH and EMEA</p>
                 </div>
               </div>
 
@@ -101,9 +92,7 @@ export function Founder() {
 
           {/* The record */}
           <div>
-            <p className="folio rule-b pb-4 text-[color:var(--color-gold-700)]">
-              Where the quota was carried
-            </p>
+            <p className="label rule-b pb-3">Track record</p>
 
             <dl className="mt-2">
               {track.map((t) => (
@@ -113,7 +102,7 @@ export function Founder() {
                 >
                   <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
                     <dt className="title text-[1.1875rem]">{t.place}</dt>
-                    <span className="meta">{t.years}</span>
+                    <span className="label">{t.years}</span>
                   </div>
                   <dd className="mt-1.5 max-w-[46ch] text-[0.9375rem] leading-[1.6] text-[color:var(--color-mute)]">
                     {t.detail}

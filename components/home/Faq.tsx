@@ -1,4 +1,4 @@
-import { Chapter, Container } from "@/components/ui";
+import { SectionHead, Container } from "@/components/ui";
 
 /* Native <details>, so the accordion costs nothing to ship and still works
    with the keyboard and with a screen reader. */
@@ -45,16 +45,19 @@ function List({ items }: { items: { q: string; a: string }[] }) {
     <div>
       {items.map((f) => (
         <details key={f.q} className="group rule-t">
-          <summary className="flex cursor-pointer list-none items-baseline gap-5 py-5 [&::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer list-none items-start gap-5 py-5 [&::-webkit-details-marker]:hidden">
             <span
               aria-hidden="true"
-              className="numeral shrink-0 text-[1rem] transition-transform duration-200 group-open:rotate-90"
+              className="mt-2 h-[9px] w-[9px] shrink-0 text-[color:var(--color-gold-600)]"
             >
-              →
+              <span className="relative block h-full w-full">
+                <span className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-current" />
+                <span className="absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-current transition-transform duration-200 group-open:scale-y-0" />
+              </span>
             </span>
             <span className="title text-[1.1875rem] leading-[1.45]">{f.q}</span>
           </summary>
-          <p className="max-w-[58ch] pb-6 pl-10 text-[1rem] leading-[1.75] text-pretty text-[color:var(--color-body)]">
+          <p className="max-w-[58ch] pb-6 pl-[2.1rem] text-[1rem] leading-[1.75] text-pretty text-[color:var(--color-body)]">
             {f.a}
           </p>
         </details>
@@ -68,25 +71,17 @@ export function Faq() {
   return (
     <section className="rule-b">
       <Container className="py-20 sm:py-28">
-        <Chapter
-          numeral="V"
-          running="Chapter five · Questions"
-          title={
-            <>
-              The things people ask <span className="accent">first.</span>
-            </>
-          }
-        />
+        <SectionHead label="Questions" title="The things people ask first" />
 
         <div className="mt-16 grid gap-x-16 gap-y-12 lg:grid-cols-2">
           <div>
-            <p className="smallcaps">If you are hiring</p>
+            <p className="label">If you are hiring</p>
             <div className="mt-5">
               <List items={companyFaq} />
             </div>
           </div>
           <div>
-            <p className="smallcaps">If you are looking for a role</p>
+            <p className="label">If you are looking for a role</p>
             <div className="mt-5">
               <List items={candidateFaq} />
             </div>

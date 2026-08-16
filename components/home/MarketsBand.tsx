@@ -24,8 +24,8 @@ export function MarketsBand() {
               <span className="font-[family-name:var(--font-serif)] text-[1.375rem] text-[color:var(--color-ink-900)] sm:text-[1.625rem]">
                 {m}
               </span>
-              <span className="mx-7 text-[0.8125rem] text-[color:var(--color-gold-600)] sm:mx-10">
-                ✳
+              <span className="mx-7 text-[0.9375rem] text-[color:var(--color-sand-400)] sm:mx-9">
+                ·
               </span>
             </span>
           ))}

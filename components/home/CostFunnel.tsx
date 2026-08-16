@@ -93,11 +93,9 @@ export function CostFunnel() {
         <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[0.85fr_1.15fr]">
           {/* The argument */}
           <div>
-            <p className="folio text-[color:var(--color-gold-700)]">
-              An aside · before you write the job ad
-            </p>
-            <h2 className="display mt-7 max-w-[11ch] text-[clamp(2.25rem,5vw,3.75rem)]">
-              The salary is <span className="accent">the small number.</span>
+            <p className="label">Before you write the job ad</p>
+            <h2 className="display mt-3 max-w-[13ch] text-[clamp(1.875rem,4vw,3rem)]">
+              The salary is the small number.
             </h2>
             <p className="mt-8 max-w-[42ch] text-[1.0625rem] leading-[1.8] text-pretty text-[color:var(--color-body)]">
               Most teams budget an SDR by their base salary. The real figure sits
@@ -112,16 +110,14 @@ export function CostFunnel() {
             {!done ? (
               <div>
                 <div className="flex items-baseline justify-between gap-6">
-                  <p className="folio text-[color:var(--color-mute)]">
-                    Question {step + 1} of {questions.length}
-                  </p>
+                  <p className="label">Question {step + 1} of {questions.length}</p>
                   {step > 0 ? (
                     <button
                       type="button"
                       onClick={back}
-                      className="folio text-[color:var(--color-gold-700)] transition-colors hover:text-[color:var(--color-ink-900)]"
+                      className="label text-[color:var(--color-gold-700)] transition-colors hover:text-[color:var(--color-ink-900)]"
                     >
-                      ← Back
+                      Back
                     </button>
                   ) : null}
                 </div>
@@ -138,11 +134,11 @@ export function CostFunnel() {
                         onClick={() => pick(o.v)}
                         className="group flex w-full items-baseline justify-between gap-6 py-5 text-left"
                       >
-                        <span className="title text-[1.375rem] transition-colors group-hover:text-[color:var(--color-gold-700)]">
+                        <span className="title text-[1.25rem] transition-colors group-hover:text-[color:var(--color-gold-700)]">
                           {o.label}
                         </span>
-                        <span className="folio text-[color:var(--color-gold-700)] transition-transform duration-200 group-hover:translate-x-1">
-                          Select →
+                        <span className="text-[1rem] text-[color:var(--color-gold-700)] transition-transform duration-200 group-hover:translate-x-1">
+                          →
                         </span>
                       </button>
                     </li>
@@ -153,13 +149,11 @@ export function CostFunnel() {
             ) : (
               <div>
                 <div className="flex items-baseline justify-between gap-6">
-                  <p className="folio text-[color:var(--color-mute)]">
-                    True first-year cost, per hire
-                  </p>
+                  <p className="label">True first-year cost, per hire</p>
                   <button
                     type="button"
                     onClick={reset}
-                    className="folio text-[color:var(--color-gold-700)] transition-colors hover:text-[color:var(--color-ink-900)]"
+                    className="label text-[color:var(--color-gold-700)] transition-colors hover:text-[color:var(--color-ink-900)]"
                   >
                     Start again
                   </button>
@@ -197,7 +191,7 @@ export function CostFunnel() {
 
                 <p className="mt-8 max-w-[46ch] text-[1.0625rem] leading-[1.75] text-[color:var(--color-body)]">
                   The biggest cost is not on the list. It is{" "}
-                  <span className="accent">the wrong hire</span>. Get the first
+                  the wrong hire. Get the first
                   one right and ramp, management drag and mis-hire risk all shrink
                   at once.
                 </p>

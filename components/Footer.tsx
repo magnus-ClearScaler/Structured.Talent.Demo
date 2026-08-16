@@ -50,14 +50,14 @@ export function Footer() {
               rel="noreferrer noopener"
               className="mt-6 inline-block border-b border-[color:var(--color-gold-400)]/60 pb-1 text-[0.9375rem] text-[color:var(--color-sand-200)] transition-colors hover:border-[color:var(--color-paper-50)] hover:text-[color:var(--color-paper-50)]"
             >
-              Follow the writing on LinkedIn →
+              Harm on LinkedIn
             </a>
           </div>
 
           <div className="grid gap-10 sm:grid-cols-3">
             {columns.map((c) => (
               <div key={c.heading}>
-                <p className="folio text-[color:var(--color-gold-300)]">{c.heading}</p>
+                <p className="label-light">{c.heading}</p>
                 <ul className="mt-5 space-y-3">
                   {c.links.map((l) => (
                     <li key={l.label}>
@@ -79,8 +79,8 @@ export function Footer() {
         </div>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <p className="folio text-[color:var(--color-sand-400)]">{site.licence}</p>
-          <p className="folio text-[color:var(--color-sand-400)]">
+          <p className="label-light">{site.licence}</p>
+          <p className="label-light">
             © 2026 {site.name} · {site.city}
           </p>
         </div>

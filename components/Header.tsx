@@ -7,52 +7,48 @@ import { site } from "@/lib/site";
 const nav = [
   { href: "#candidates", label: "For candidates" },
   { href: "#companies", label: "For companies" },
-  { href: "#playbook", label: "The playbook" },
-  { href: "#founder", label: "The founder" },
+  { href: "#playbook", label: "Playbook" },
+  { href: "#founder", label: "About Harm" },
 ];
 
 export function Wordmark({ tone = "dark" }: { tone?: "dark" | "light" }) {
   return (
     <span
-      className={`font-[family-name:var(--font-serif)] text-[1.375rem] leading-none tracking-[-0.015em] ${
+      className={`text-[1.3125rem] leading-none tracking-[0.005em] ${
         tone === "light"
           ? "text-[color:var(--color-paper-50)]"
           : "text-[color:var(--color-ink-900)]"
       }`}
     >
-      Structured{" "}
-      <span
-        className={
-          tone === "light"
-            ? "italic text-[color:var(--color-gold-300)]"
-            : "italic text-[color:var(--color-gold-600)]"
-        }
-      >
-        Talent
-      </span>
+      Structured Talent
     </span>
   );
 }
 
-/**
- * A masthead rather than a nav bar: wordmark, a rule, and the standing line a
- * journal would carry. It does not float, it does not blur, it does not follow
- * you down the page.
- */
+/* Wordmark, links, one action. No standing strapline, no roman numerals, and
+   it does not follow you down the page. */
 export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
     <header className="rule-b bg-[color:var(--color-paper-50)]">
       <Container>
-        <div className="flex items-center justify-between gap-6 py-5">
+        <div className="flex items-center justify-between gap-8 py-5">
           <a href="#top" aria-label="Structured Talent, back to top">
             <Wordmark />
           </a>
 
-          <p className="folio hidden text-[color:var(--color-mute)] lg:block">
-            Sales hiring &amp; GTM playbooks · Dublin · DACH &amp; EMEA
-          </p>
+          <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
+            {nav.map((n) => (
+              <a
+                key={n.href}
+                href={n.href}
+                className="text-[1rem] text-[color:var(--color-body)] transition-colors hover:text-[color:var(--color-ink-900)]"
+              >
+                {n.label}
+              </a>
+            ))}
+          </nav>
 
           <div className="flex items-center gap-6">
             <a
@@ -69,48 +65,25 @@ export function Header() {
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="mobile-nav"
-              className="meta text-[color:var(--color-ink-900)] lg:hidden"
+              className="text-[1rem] text-[color:var(--color-ink-900)] lg:hidden"
             >
-              {open ? "Close" : "Contents"}
+              {open ? "Close" : "Menu"}
             </button>
           </div>
         </div>
       </Container>
 
-      {/* Standing contents line, the way a masthead carries its sections */}
-      <div className="rule-t hidden bg-[color:var(--color-paper-100)]/50 lg:block">
-        <Container>
-          <nav aria-label="Primary" className="flex items-center gap-10 py-3">
-            {nav.map((n, i) => (
-              <a
-                key={n.href}
-                href={n.href}
-                className="group flex items-baseline gap-2.5 text-[0.9375rem] text-[color:var(--color-body)] transition-colors hover:text-[color:var(--color-ink-900)]"
-              >
-                <span className="numeral text-[0.8125rem]">
-                  {["I", "II", "III", "IV"][i]}
-                </span>
-                {n.label}
-              </a>
-            ))}
-          </nav>
-        </Container>
-      </div>
-
       {open ? (
         <div id="mobile-nav" className="rule-t bg-[color:var(--color-paper-50)] lg:hidden">
-          <Container className="py-3">
+          <Container className="py-2">
             <nav aria-label="Primary, mobile" className="flex flex-col">
-              {nav.map((n, i) => (
+              {nav.map((n) => (
                 <a
                   key={n.href}
                   href={n.href}
                   onClick={() => setOpen(false)}
-                  className="rule-b flex items-baseline gap-3 py-3.5 text-[1.0625rem] text-[color:var(--color-ink-900)] last:border-0"
+                  className="rule-b py-3.5 text-[1.0625rem] text-[color:var(--color-ink-900)] last:border-0"
                 >
-                  <span className="numeral text-[0.8125rem]">
-                    {["I", "II", "III", "IV"][i]}
-                  </span>
                   {n.label}
                 </a>
               ))}
@@ -119,7 +92,7 @@ export function Header() {
                 target="_blank"
                 rel="noreferrer noopener"
                 onClick={() => setOpen(false)}
-                className="mt-4 mb-2 bg-[color:var(--color-ink-900)] px-6 py-3.5 text-center text-[1rem] text-[color:var(--color-paper-50)]"
+                className="mt-4 mb-3 bg-[color:var(--color-ink-900)] px-6 py-3.5 text-center text-[1rem] text-[color:var(--color-paper-50)]"
               >
                 Book a call
               </a>
