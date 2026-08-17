@@ -10,40 +10,41 @@ Linnecke. Front page only.
 
 ## The design
 
-The page is set as a printed field manual, which is the one metaphor this
-business has actually earned: it is called Structured Talent, the founder wrote
-a book, and the product is a playbook.
+Restrained and plain, because that is Harm's register. His own LinkedIn headline
+reads "Business Development@ Google Chrome | Fitness & Cycling Enthusiast |
+Sales Mentor", and his site says "No forms, no funnels. Just email me directly."
 
-- **Chapters, not sections.** Roman numerals hung in the margin, a running head
-  and a rule at each opening.
-- **One reading face.** Newsreader sets the display *and* the body. Serif body
-  copy is the single biggest difference between a document and a landing page.
-- **Mono earns three jobs only:** folios, numerals and small print. It is not a
-  coloured eyebrow above every heading.
-- **Rules instead of boxes.** Almost nothing on the page is a bordered card.
-  The gazetteer, the services, the steps, the ledger and the FAQ are all ruled
-  lists with hanging labels.
-- **Two grounds, one metal.** Paper and ink carry the page; gold appears as a
-  hairline, a numeral and an italic clause, never as a filled band.
-- **No radial glows, no pricing-table "most popular" card, no icon bullets.**
-  Those are the tells that made the earlier draft read as generated.
+- **One typeface.** Newsreader sets the display and the body. No second display
+  face, no mono for labels.
+- **Headings do not change font or colour halfway through a sentence.** One
+  face, one weight, one colour, all the way down.
+- **Labels are plain small text in sentence case** — not tracked-out uppercase,
+  not a coloured eyebrow chip.
+- **Rules instead of boxes.** The markets, the services, the steps, the ledger
+  and the FAQ are all ruled lists with hanging labels.
+- **Two grounds, one metal.** Paper and ink carry the page; gold is a hairline,
+  a link underline and a step number.
+- **Copy is his.** Where he already had a line, his wording stands, contractions
+  included. The standfirst is first person because he writes in first person.
 
 ## Structure
 
 The page is a fork, not a pitch. Two entirely different people arrive here and
 the current site makes them read each other's copy.
 
-- **Masthead** — wordmark, standing line, a contents row. It does not follow you down the page.
-- **Hero** — the statement, the founder bleeding off the right edge, and the fork set as a contents page
+- **Header** — wordmark, four links, one action. It does not follow you down the page.
+- **Hero** — the statement and the two routes. The portrait runs full height on
+  the right from `lg` up; on a phone it becomes a small byline portrait above the
+  headline, cropped to head and shoulders so the face still reads at 150px.
 - **Markets** — a drifting line of the markets he sold into and now hires for
-- **I. For candidates** — a gazetteer of markets, what they get, four steps on ink
-- **II. For companies** — three failure modes, three services, engagement models
-- **An aside** — *The salary is the small number*: three taps, one number
-- **III. The playbook** — the fourteen-section contents, set the way the document sets it
-- **IV. The founder** — the story with a drop cap, the record beside it
-- **V. Questions** — split by audience
-- **VI. Start a conversation** — the same two doors, then email, phone and LinkedIn
-- **Colophon** — licence, city, year
+- **For candidates** — where the roles sit, what he offers, four steps on ink
+- **For companies** — three failure modes, three services, engagement models
+- **The salary is the small number** — three taps, one number
+- **The playbook** — the fourteen-section contents
+- **About Harm** — the story, the track record beside it
+- **Questions** — split by audience
+- **Let's build your sales engine** — the same two routes, then email, phone and LinkedIn
+- **Footer** — licence, city, year
 
 The seven-slider cost calculator is gone. Sliders put the work on the visitor
 and ask them to have opinions about employer on-costs before they have agreed
@@ -81,7 +82,7 @@ The audit told them to protect the speed score, so:
 
 - Static prerender, no data fetching, no analytics scripts
 - Two client components only: the masthead menu and the cost funnel
-- Two images, both WebP, 37 KB and 14 KB
+- Two images, both WebP, 26 KB and 14 KB
 - No icon package, no animation library, no UI kit
 - No scroll-entrance animation. The observer version left empty boxes on a slow
   hydrate, and the CSS `view()` timeline that replaced it resolves to an

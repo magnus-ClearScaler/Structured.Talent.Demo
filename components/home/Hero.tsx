@@ -25,36 +25,42 @@ const standing = [
 export function Hero() {
   return (
     <section id="top" className="paper rule-b">
-      {/* On a phone the photograph comes first and stays small: it is an
-          introduction, not a cover. On a desktop it moves to the right and
-          runs the full height of the statement. */}
+      {/* One asset serves both layouts: a head-and-shoulders crop, tight enough
+          that the face still reads at 150px on a phone. The earlier wide crop
+          was a portrait photograph letterboxed into a landscape band, which is
+          how you end up with a lot of window and a very small head. */}
       <div className="mx-auto grid w-full max-w-[104rem] lg:grid-cols-[1.3fr_0.7fr]">
-        <figure className="relative h-[15rem] sm:h-[20rem] lg:order-2 lg:h-auto lg:min-h-full">
-          <Image
-            src="/harm-linnecke.webp"
-            alt="Harm Linnecke, founder of Structured Talent, in Dublin"
-            fill
-            sizes="(min-width: 1024px) 36vw, 100vw"
-            priority
-            className="object-cover object-[50%_18%] lg:object-[50%_22%]"
-          />
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 hidden bg-gradient-to-r from-paper-50 via-transparent to-transparent lg:block"
-          />
-        </figure>
+        <div className="px-6 pt-9 pb-12 sm:px-10 sm:pt-12 lg:order-1 lg:py-16 lg:pr-14 lg:pl-[max(2.5rem,calc((100vw-76rem)/2+1.5rem))]">
+          {/* Byline. Phones only: on a laptop the photograph is already there,
+              running the full height of the statement. */}
+          <div className="mb-9 flex items-center gap-5 lg:hidden">
+            <Image
+              src="/harm-portrait.webp"
+              alt="Harm Linnecke, founder of Structured Talent"
+              width={720}
+              height={900}
+              sizes="(min-width: 640px) 11rem, 9rem"
+              priority
+              className="w-[9rem] shrink-0 object-cover sm:w-[11rem]"
+            />
+            <div>
+              <p className="title text-[1.1875rem]">Harm Linnecke</p>
+              <p className="label mt-1">
+                Founder, Structured Talent. Dublin, working across DACH and EMEA.
+              </p>
+            </div>
+          </div>
 
-        <div className="px-6 pt-10 pb-12 sm:px-10 sm:pt-14 lg:order-1 lg:py-16 lg:pr-14 lg:pl-[max(2.5rem,calc((100vw-76rem)/2+1.5rem))]">
           <h1 className="display max-w-[19ch] text-[clamp(2rem,4.2vw,3.25rem)]">
             The multilingual sales talent to win in Europe, and the playbook to
             make them land.
           </h1>
 
           <p className="mt-7 max-w-[54ch] text-[1.0625rem] leading-[1.75] text-pretty text-[color:var(--color-body)]">
-            I am Harm Linnecke. I spent fifteen years carrying quota in Germany,
-            the UK, Spain and Ireland, and I now work on both sides of the same
-            problem: finding sales people who can close in the language, and
-            writing the playbook that makes them productive once they arrive.
+            I spent fifteen years carrying quota in Germany, the UK, Spain and
+            Ireland, and I now work on both sides of the same problem: finding
+            sales people who can close in the language, and writing the playbook
+            that makes them productive once they arrive.
           </p>
 
           <nav aria-label="Where to start" className="mt-10 max-w-[46rem]">
@@ -80,6 +86,21 @@ export function Hero() {
             </ul>
           </nav>
         </div>
+
+        <figure className="relative hidden lg:order-2 lg:block lg:min-h-full">
+          <Image
+            src="/harm-portrait.webp"
+            alt="Harm Linnecke, founder of Structured Talent"
+            fill
+            sizes="36vw"
+            priority
+            className="object-cover object-[50%_15%]"
+          />
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-r from-paper-50 via-transparent to-transparent"
+          />
+        </figure>
       </div>
 
       <div className="rule-t bg-[color:var(--color-paper-100)]/60">
