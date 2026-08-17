@@ -1,4 +1,33 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
+
+/**
+ * A full-bleed photographic breather.
+ *
+ * All four photographs on this page are CC0 stock, put through the same
+ * duotone so they read as one commissioned set rather than four downloads:
+ * greyscale, mild contrast, then mapped between the page's ink and paper.
+ * That treatment is doing most of the work — untreated, they look exactly
+ * like what they are.
+ *
+ * They carry no information, so they are hidden from assistive technology.
+ */
+export function Band({
+  src,
+  className = "",
+}: {
+  src: string;
+  className?: string;
+}) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`relative h-[12rem] w-full overflow-hidden sm:h-[16rem] lg:h-[21rem] ${className}`}
+    >
+      <Image src={src} alt="" fill sizes="100vw" className="object-cover" />
+    </div>
+  );
+}
 
 export function Container({
   children,

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SectionHead, Container } from "@/components/ui";
+import { SectionHead, Container, Band } from "@/components/ui";
 import { site } from "@/lib/site";
 
 /* Every line here is on the client's own about page. It is the strongest proof
@@ -127,6 +127,8 @@ export function Founder() {
           </div>
         </div>
       </Container>
+
+      <Band src="/img-terrace.webp" />
     </section>
   );
 }

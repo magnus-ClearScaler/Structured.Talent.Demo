@@ -1,4 +1,4 @@
-import { SectionHead, Container, Action } from "@/components/ui";
+import { SectionHead, Container, Action, Band } from "@/components/ui";
 import { site } from "@/lib/site";
 
 const services = [
@@ -104,6 +104,8 @@ export function Companies() {
             ))}
           </ol>
         </div>
+
+        <Band src="/img-grid.webp" className="mt-16" />
 
         {/* How engagements are structured */}
         <div className="mt-16 grid gap-x-14 gap-y-8 lg:grid-cols-[0.75fr_1.25fr]">

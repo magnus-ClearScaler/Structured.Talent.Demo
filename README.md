@@ -24,6 +24,9 @@ Sales Mentor", and his site says "No forms, no funnels. Just email me directly."
   and the FAQ are all ruled lists with hanging labels.
 - **Two grounds, one metal.** Paper and ink carry the page; gold is a hairline,
   a link underline and a step number.
+- **One photographic treatment.** The four stock photographs are greyscaled,
+  given mild contrast and then mapped between the page's ink and paper, so they
+  read as one commissioned set rather than four downloads.
 - **Copy is his.** Where he already had a line, his wording stands, contractions
   included. The standfirst is first person because he writes in first person.
 
@@ -95,7 +98,13 @@ The audit told them to protect the speed score, so:
   representative. Four of them are named on the live site; the rest should be
   swapped for Harm's real table of contents.
 - The founder portrait is the image already published on structuredtalent.com,
-  cropped. A real photograph would be better.
+  recropped to head and shoulders. A real photograph would be better.
+- The four photographs (`public/img-*.webp`) are CC0 stock from Openverse
+  (rawpixel and StockSnap), so no attribution is owed and commercial use is
+  permitted. They are placed as atmosphere and are hidden from assistive
+  technology; none of them is captioned as a specific place, because the
+  sources do not reliably identify one. Before this goes live they should be
+  replaced with licensed or commissioned photography.
 - The cost model's assumptions (half output during ramp, mis-hire cost at 0.75×
   base plus lost ramp) are conservative and defensible, but they are ours. Worth
   agreeing them with Harm before the page is public.

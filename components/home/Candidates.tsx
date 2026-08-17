@@ -1,4 +1,4 @@
-import { SectionHead, Container, Action } from "@/components/ui";
+import { SectionHead, Container, Action, Band } from "@/components/ui";
 import { site } from "@/lib/site";
 
 /* Country level rather than city level, because that is what he actually
@@ -94,6 +94,8 @@ export function Candidates() {
           </dl>
         </div>
       </Container>
+
+      <Band src="/img-street.webp" />
 
       {/* The four steps, on ink */}
       <div className="bg-[color:var(--color-ink-900)]">

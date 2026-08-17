@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SectionHead, Container, Action } from "@/components/ui";
 import { site } from "@/lib/site";
 
@@ -41,7 +42,17 @@ export function Playbook() {
               <span className="label">Free, and no email required</span>
             </div>
 
-            <p className="mt-10 max-w-[40ch] border-l border-[color:var(--color-gold-500)] pl-5 text-[1rem] leading-[1.7] text-[color:var(--color-mute)]">
+            <Image
+              src="/img-facade.webp"
+              alt=""
+              aria-hidden="true"
+              width={1600}
+              height={900}
+              sizes="(min-width: 1024px) 30rem, 100vw"
+              className="mt-10 w-full object-cover"
+            />
+
+            <p className="mt-8 max-w-[40ch] border-l border-[color:var(--color-gold-500)] pl-5 text-[1rem] leading-[1.7] text-[color:var(--color-mute)]">
               There are two routes in: one for US teams opening Europe, one for
               European teams scaling across EMEA. Both deliver the same fourteen
               sections, written from scratch around your product, your ICP and
