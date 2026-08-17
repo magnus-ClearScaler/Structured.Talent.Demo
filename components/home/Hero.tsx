@@ -47,21 +47,22 @@ export function Hero() {
           </div>
 
           {/* The portrait, seated on the dark ground rather than framed on it.
-              It leads on a phone, at a size that introduces him without taking
-              the screen; on a laptop it takes the right-hand column. */}
-          <div className="relative order-first lg:order-none">
-            <div className="relative aspect-[4/5] w-full max-w-[13rem] overflow-hidden sm:max-w-[16rem] lg:ml-auto lg:max-w-[26rem]">
+              On a phone it closes the hero rather than opening it, running edge
+              to edge and dissolving into the ground so it reads as part of the
+              section; on a laptop it takes the right-hand column. */}
+          <div className="relative">
+            <div className="relative -mx-6 aspect-[4/3] overflow-hidden sm:-mx-10 sm:aspect-[16/9] lg:mx-0 lg:ml-auto lg:aspect-[4/5] lg:max-w-[26rem]">
               <Image
                 src="/harm-portrait.webp"
                 alt="Harm Linnecke, founder of Structured Talent"
                 fill
-                sizes="(min-width: 1024px) 28rem, 100vw"
+                sizes="(min-width: 1024px) 26rem, 100vw"
                 priority
-                className="object-cover"
+                className="object-cover object-top lg:object-center"
               />
               <span
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink-950)] via-transparent to-transparent"
+                className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-[color:var(--color-ink-950)] to-transparent"
               />
             </div>
             <div className="mt-4 flex items-baseline gap-3 lg:justify-end">
