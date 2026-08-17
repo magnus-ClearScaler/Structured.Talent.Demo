@@ -1,34 +1,6 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 
-/**
- * A full-bleed photographic breather.
- *
- * All four photographs on this page are CC0 stock, put through the same
- * duotone so they read as one commissioned set rather than four downloads:
- * greyscale, mild contrast, then mapped between the page's ink and paper.
- * That treatment is doing most of the work — untreated, they look exactly
- * like what they are.
- *
- * They carry no information, so they are hidden from assistive technology.
- */
-export function Band({
-  src,
-  className = "",
-}: {
-  src: string;
-  className?: string;
-}) {
-  return (
-    <div
-      aria-hidden="true"
-      className={`relative h-[12rem] w-full overflow-hidden sm:h-[16rem] lg:h-[21rem] ${className}`}
-    >
-      <Image src={src} alt="" fill sizes="100vw" className="object-cover" />
-    </div>
-  );
-}
-
 export function Container({
   children,
   className = "",
@@ -37,88 +9,139 @@ export function Container({
   className?: string;
 }) {
   return (
-    <div className={`mx-auto w-full max-w-[76rem] px-6 sm:px-10 ${className}`}>
+    <div className={`mx-auto w-full max-w-[80rem] px-6 sm:px-10 ${className}`}>
       {children}
     </div>
   );
 }
 
-/**
- * A section opening: a rule, a small plain label, the heading, and the
- * standfirst. No numerals, no running head, no uppercase tracking. The
- * hierarchy comes from size and space, which is all it ever needed.
- */
 export function SectionHead({
-  label,
+  eyebrow,
   title,
-  standfirst,
-  tone = "dark",
+  lead,
+  tone = "light",
   className = "",
 }: {
-  label?: string;
+  eyebrow?: string;
   title: ReactNode;
-  standfirst?: ReactNode;
-  tone?: "dark" | "light";
+  lead?: ReactNode;
+  tone?: "light" | "dark";
   className?: string;
 }) {
-  const light = tone === "light";
+  const dark = tone === "dark";
   return (
-    <header className={`${light ? "rule-t-dark" : "rule-t"} pt-8 ${className}`}>
-      {label ? (
-        <p className={light ? "label-light" : "label"}>{label}</p>
+    <header className={`max-w-[46rem] ${className}`}>
+      {eyebrow ? (
+        <p className={dark ? "eyebrow-dark" : "eyebrow"}>{eyebrow}</p>
       ) : null}
       <h2
-        className={`title mt-3 max-w-[22ch] text-[clamp(1.875rem,4vw,3rem)] text-balance ${
-          light ? "text-[color:var(--color-paper-50)]" : ""
-        }`}
+        className={`h2 mt-4 text-[clamp(2rem,4.2vw,3.25rem)] text-balance ${dark ? "on-dark" : ""}`}
       >
         {title}
       </h2>
-      {standfirst ? (
-        <p
-          className={`mt-6 max-w-[56ch] text-[1.0625rem] leading-[1.75] text-pretty ${
-            light ? "text-[color:var(--color-sand-200)]" : "text-[color:var(--color-body)]"
-          }`}
-        >
-          {standfirst}
+      {lead ? (
+        <p className={`mt-6 max-w-[42rem] text-pretty ${dark ? "lead-dark" : "lead"}`}>
+          {lead}
         </p>
       ) : null}
     </header>
   );
 }
 
-/* One filled shape for the primary action, a ruled link for everything else. */
-export function Action({
+/* Sharp corners, no gradients, no glow. Three tones and that is all. */
+const tones = {
+  primary:
+    "bg-[color:var(--color-ink-900)] text-white hover:bg-[color:var(--color-ink-700)]",
+  invert:
+    "bg-white text-[color:var(--color-ink-950)] hover:bg-[color:var(--color-surface-2)]",
+  outline:
+    "border border-[color:var(--color-line)] text-[color:var(--color-ink)] hover:border-[color:var(--color-ink)]",
+  "outline-dark":
+    "border border-[color:var(--color-line-dark)] text-[color:var(--color-onink)] hover:border-[color:var(--color-brass-400)]",
+} as const;
+
+export function Button({
   href,
   children,
-  tone = "ink",
+  tone = "primary",
   className = "",
 }: {
   href: string;
   children: ReactNode;
-  tone?: "ink" | "paper" | "quiet" | "quiet-light";
+  tone?: keyof typeof tones;
   className?: string;
 }) {
-  const tones = {
-    ink: "bg-[color:var(--color-ink-900)] text-[color:var(--color-paper-50)] hover:bg-[color:var(--color-ink-800)] px-8 py-3.5",
-    paper:
-      "bg-[color:var(--color-paper-50)] text-[color:var(--color-ink-950)] hover:bg-white px-8 py-3.5",
-    quiet:
-      "border-b border-[color:var(--color-gold-500)] pb-1 text-[color:var(--color-ink-900)] hover:border-[color:var(--color-ink-900)]",
-    "quiet-light":
-      "border-b border-[color:var(--color-gold-400)]/70 pb-1 text-[color:var(--color-paper-50)] hover:border-[color:var(--color-paper-50)]",
-  } as const;
-
   const isAnchor =
     href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:");
-
   return (
     <a
       href={href}
       {...(!isAnchor ? { target: "_blank", rel: "noreferrer noopener" } : {})}
-      className={`inline-flex items-center gap-3 text-[1rem] whitespace-nowrap transition-colors duration-200 ${tones[tone]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2.5 px-6 py-3.5 text-[0.9375rem] font-medium tracking-[-0.01em] whitespace-nowrap transition-colors duration-200 ${tones[tone]} ${className}`}
     >
       {children}
     </a>
+  );
+}
+
+/* An arrow-tail link, used everywhere a section needs a way onward. */
+export function TextLink({
+  href,
+  children,
+  tone = "light",
+}: {
+  href: string;
+  children: ReactNode;
+  tone?: "light" | "dark";
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer noopener"
+      className={`group inline-flex items-center gap-2 text-[0.9375rem] font-medium transition-colors ${
+        tone === "dark"
+          ? "text-[color:var(--color-brass-400)] hover:text-[color:var(--color-brass-300)]"
+          : "text-[color:var(--color-ink)] hover:text-[color:var(--color-brass-700)]"
+      }`}
+    >
+      {children}
+      <span
+        aria-hidden="true"
+        className="transition-transform duration-200 group-hover:translate-x-1"
+      >
+        →
+      </span>
+    </a>
+  );
+}
+
+/**
+ * Photographs ship pre-graded to a cool near-monochrome, so a section can
+ * drop one in without it fighting the palette. They carry no information and
+ * are hidden from assistive technology.
+ */
+export function Figure({
+  src,
+  className = "",
+  ratio = "aspect-[16/9]",
+  priority = false,
+}: {
+  src: string;
+  className?: string;
+  ratio?: string;
+  priority?: boolean;
+}) {
+  return (
+    <div aria-hidden="true" className={`relative overflow-hidden ${ratio} ${className}`}>
+      <Image
+        src={src}
+        alt=""
+        fill
+        sizes="(min-width: 1024px) 50vw, 100vw"
+        priority={priority}
+        className="object-cover"
+      />
+    </div>
   );
 }

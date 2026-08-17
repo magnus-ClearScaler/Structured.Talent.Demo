@@ -1,21 +1,23 @@
-import { Container, Action } from "@/components/ui";
+import { Container, Button } from "@/components/ui";
 import { site } from "@/lib/site";
 
 /* The same two routes the page opened on, closed. One each, not six. */
 const doors = [
-  {
-    kicker: "If you are looking for a role",
-    title: "Send your CV",
-    body: "One file. You will hear back from me within a business day, with the reason either way.",
-    href: site.pages.candidates,
-    meta: "Free, and always paid by the employer",
-  },
   {
     kicker: "If you are hiring",
     title: "Book a hiring call",
     body: "Tell me the markets and the roles. Thirty minutes, no obligation, and an honest read even if the answer is not yet.",
     href: site.booking.hiring,
     meta: "Thirty minutes, founder to founder",
+    primary: true,
+  },
+  {
+    kicker: "If you are looking for a role",
+    title: "Send your CV",
+    body: "One file. You will hear back from me within a business day, with the reason either way.",
+    href: site.pages.candidates,
+    meta: "Free, and always paid by the employer",
+    primary: false,
   },
 ];
 
@@ -27,60 +29,96 @@ const direct = [
 
 export function FinalCta() {
   return (
-    <section id="contact" className="bg-[color:var(--color-ink-900)]">
-      <Container className="py-16 sm:py-20">
-        <div className="rule-t-dark grid gap-x-16 gap-y-8 pt-8 lg:grid-cols-[1fr_1fr]">
-          <h2 className="title max-w-[16ch] text-[clamp(1.875rem,4vw,3rem)] text-[color:var(--color-paper-50)]">
+    <section id="contact" className="bg-[color:var(--color-ink-950)] py-20 sm:py-28">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
+          <h2 className="h2 on-dark max-w-[14ch] text-[clamp(2rem,4.4vw,3.25rem)]">
             Let&rsquo;s build your sales engine
           </h2>
-          <p className="max-w-[46ch] self-end text-[1.0625rem] leading-[1.75] text-pretty text-[color:var(--color-sand-200)]">
+          <p className="lead-dark max-w-[46ch] self-end text-pretty">
             No forms and no funnels. I read every message myself and reply within
             one business day. The clearer you are about the market and the role,
             the more useful the first reply will be.
           </p>
         </div>
 
-        <ol className="mt-14">
+        <div className="mt-14 grid gap-px bg-[color:var(--color-line-dark)] lg:grid-cols-2">
           {doors.map((d) => (
-            <li key={d.title} className="rule-t-dark">
-              <a
-                href={d.href}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="group grid gap-x-10 gap-y-3 py-8 sm:grid-cols-[18rem_1fr] lg:grid-cols-[18rem_1fr_auto]"
-              >
-                <span>
-                  <span className="label-light block">{d.kicker}</span>
-                  <span className="title mt-1.5 block text-[clamp(1.375rem,2.4vw,1.75rem)] text-[color:var(--color-paper-50)]">
-                    {d.title}
-                  </span>
+            <a
+              key={d.title}
+              href={d.href}
+              target="_blank"
+              rel="noreferrer noopener"
+              className={`group flex flex-col justify-between p-8 transition-colors duration-300 sm:p-10 ${
+                d.primary
+                  ? "bg-white hover:bg-[color:var(--color-surface-2)]"
+                  : "bg-[color:var(--color-ink-900)] hover:bg-[color:var(--color-ink-800)]"
+              }`}
+            >
+              <span>
+                <span
+                  className={`text-[0.875rem] font-medium ${
+                    d.primary
+                      ? "text-[color:var(--color-brass-700)]"
+                      : "text-[color:var(--color-brass-400)]"
+                  }`}
+                >
+                  {d.kicker}
                 </span>
-                <span className="max-w-[52ch] text-[1.0625rem] leading-[1.75] text-[color:var(--color-sand-300)]">
+                <span
+                  className={`h2 mt-4 block text-[clamp(1.5rem,2.6vw,2rem)] ${
+                    d.primary ? "" : "on-dark"
+                  }`}
+                >
+                  {d.title}
+                </span>
+                <span
+                  className={`mt-3 block max-w-[42ch] text-[0.9375rem] leading-[1.7] ${
+                    d.primary
+                      ? "text-[color:var(--color-body)]"
+                      : "text-[color:var(--color-onink-body)]"
+                  }`}
+                >
                   {d.body}
-                  <span className="label-light mt-2 block">{d.meta}</span>
                 </span>
-                <span className="self-center text-[1rem] text-[color:var(--color-paper-50)] transition-transform duration-200 group-hover:translate-x-1.5">
+              </span>
+
+              <span className="mt-10 flex items-baseline justify-between gap-6">
+                <span
+                  className={`text-[0.8125rem] ${
+                    d.primary
+                      ? "text-[color:var(--color-mute)]"
+                      : "text-[color:var(--color-onink-mute)]"
+                  }`}
+                >
+                  {d.meta}
+                </span>
+                <span
+                  aria-hidden="true"
+                  className={`text-[1.125rem] transition-transform duration-200 group-hover:translate-x-1.5 ${
+                    d.primary ? "text-[color:var(--color-ink)]" : "text-white"
+                  }`}
+                >
                   →
                 </span>
-              </a>
-            </li>
+              </span>
+            </a>
           ))}
-          <li className="rule-t-dark" />
-        </ol>
+        </div>
 
         {/* The audit found the LinkedIn printed as unclickable text, so all
             three of these are real links. */}
-        <dl className="mt-12 grid gap-x-14 gap-y-7 sm:grid-cols-3">
+        <dl className="mt-14 grid gap-8 border-t border-[color:var(--color-line-dark)] pt-10 sm:grid-cols-3">
           {direct.map((d) => (
             <div key={d.k}>
-              <dt className="label-light">{d.k}</dt>
-              <dd className="mt-1.5">
+              <dt className="text-[0.875rem] text-[color:var(--color-onink-mute)]">{d.k}</dt>
+              <dd className="mt-2">
                 <a
                   href={d.href}
                   {...(d.href.startsWith("http")
                     ? { target: "_blank", rel: "noreferrer noopener" }
                     : {})}
-                  className="text-[1.0625rem] text-[color:var(--color-paper-50)] underline decoration-[color:var(--color-gold-400)]/50 underline-offset-4 transition-colors hover:decoration-[color:var(--color-paper-50)]"
+                  className="text-[1rem] text-white underline decoration-[color:var(--color-brass-500)]/60 underline-offset-4 transition-colors hover:decoration-white"
                 >
                   {d.v}
                 </a>
@@ -89,10 +127,10 @@ export function FinalCta() {
           ))}
         </dl>
 
-        <div className="mt-12">
-          <Action href={site.booking.strategy} tone="paper">
+        <div className="mt-10">
+          <Button href={site.booking.strategy} tone="outline-dark">
             Or just book thirty minutes
-          </Action>
+          </Button>
         </div>
       </Container>
     </section>

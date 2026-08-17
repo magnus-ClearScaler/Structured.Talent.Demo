@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Container } from "@/components/ui";
+import { Container, Button } from "@/components/ui";
 import { site } from "@/lib/site";
 
 const nav = [
@@ -14,58 +14,56 @@ const nav = [
 export function Wordmark({ tone = "dark" }: { tone?: "dark" | "light" }) {
   return (
     <span
-      className={`text-[1.3125rem] leading-none tracking-[0.005em] ${
-        tone === "light"
-          ? "text-[color:var(--color-paper-50)]"
-          : "text-[color:var(--color-ink-900)]"
+      className={`flex items-center gap-2.5 text-[1.0625rem] font-semibold tracking-[-0.03em] ${
+        tone === "light" ? "text-white" : "text-[color:var(--color-ink)]"
       }`}
     >
+      <span
+        aria-hidden="true"
+        className="flex h-6 w-6 items-center justify-center bg-[color:var(--color-brass-500)] text-[0.75rem] font-bold text-[color:var(--color-ink-950)]"
+      >
+        ST
+      </span>
       Structured Talent
     </span>
   );
 }
 
-/* Wordmark, links, one action. No standing strapline, no roman numerals, and
-   it does not follow you down the page. */
 export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="rule-b bg-[color:var(--color-paper-50)]">
+    <header className="sticky top-0 z-50 border-b border-[color:var(--color-line-dark)] bg-[color:var(--color-ink-950)]/92 backdrop-blur-md">
       <Container>
-        <div className="flex items-center justify-between gap-8 py-5">
+        <div className="flex h-[4.25rem] items-center justify-between gap-8">
           <a href="#top" aria-label="Structured Talent, back to top">
-            <Wordmark />
+            <Wordmark tone="light" />
           </a>
 
-          <nav aria-label="Primary" className="hidden items-center gap-9 lg:flex">
+          <nav aria-label="Primary" className="hidden items-center gap-8 lg:flex">
             {nav.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
-                className="text-[1rem] text-[color:var(--color-body)] transition-colors hover:text-[color:var(--color-ink-900)]"
+                className="text-[0.9375rem] text-[color:var(--color-onink-body)] transition-colors hover:text-white"
               >
                 {n.label}
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-6">
-            <a
-              href={site.booking.strategy}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="hidden border-b border-[color:var(--color-gold-500)] pb-0.5 text-[1rem] text-[color:var(--color-ink-900)] transition-colors hover:border-[color:var(--color-ink-900)] sm:inline-block"
-            >
-              Book a call
-            </a>
-
+          <div className="flex items-center gap-4">
+            <div className="hidden sm:block">
+              <Button href={site.booking.strategy} tone="invert" className="px-5 py-2.5">
+                Book a call
+              </Button>
+            </div>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="mobile-nav"
-              className="text-[1rem] text-[color:var(--color-ink-900)] lg:hidden"
+              className="text-[0.9375rem] text-white lg:hidden"
             >
               {open ? "Close" : "Menu"}
             </button>
@@ -74,7 +72,10 @@ export function Header() {
       </Container>
 
       {open ? (
-        <div id="mobile-nav" className="rule-t bg-[color:var(--color-paper-50)] lg:hidden">
+        <div
+          id="mobile-nav"
+          className="border-t border-[color:var(--color-line-dark)] bg-[color:var(--color-ink-950)] lg:hidden"
+        >
           <Container className="py-2">
             <nav aria-label="Primary, mobile" className="flex flex-col">
               {nav.map((n) => (
@@ -82,20 +83,18 @@ export function Header() {
                   key={n.href}
                   href={n.href}
                   onClick={() => setOpen(false)}
-                  className="rule-b py-3.5 text-[1.0625rem] text-[color:var(--color-ink-900)] last:border-0"
+                  className="border-b border-[color:var(--color-line-dark)] py-3.5 text-[1rem] text-white last:border-0"
                 >
                   {n.label}
                 </a>
               ))}
-              <a
+              <Button
                 href={site.booking.strategy}
-                target="_blank"
-                rel="noreferrer noopener"
-                onClick={() => setOpen(false)}
-                className="mt-4 mb-3 bg-[color:var(--color-ink-900)] px-6 py-3.5 text-center text-[1rem] text-[color:var(--color-paper-50)]"
+                tone="invert"
+                className="my-4 w-full"
               >
                 Book a call
-              </a>
+              </Button>
             </nav>
           </Container>
         </div>

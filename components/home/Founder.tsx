@@ -1,37 +1,44 @@
-import Image from "next/image";
-import { SectionHead, Container, Band } from "@/components/ui";
+import { SectionHead, Container, TextLink, Figure } from "@/components/ui";
 import { site } from "@/lib/site";
 
 /* Every line here is on the client's own about page. It is the strongest proof
    they own and it currently sits two clicks from the front door. */
 const track = [
-  { place: "London", years: "UK tech", detail: "Lexmark, ClickSoftware and UNeek Clothing, mostly IT. Top performer." },
-  { place: "Barcelona", years: "Outsourcing", detail: "Teleperformance, training team members for Google Cloud. Top performer." },
-  { place: "Quark Software", years: "Dublin", detail: "Best-performing AE in an EMEA team." },
-  { place: "MarketStar", years: "Dublin", detail: "Top performer for Google Chrome, later for Faire." },
-  { place: "ActiveCampaign", years: "Dublin", detail: "Top BDR." },
-  { place: "National Pen, PayPal", years: "Dublin", detail: "Full-cycle sales. Flown to Denver and to Ashburn for US sales training." },
+  { place: "Lexmark, ClickSoftware, UNeek", where: "London", detail: "UK tech, mostly IT. Top performer." },
+  { place: "Teleperformance", where: "Barcelona", detail: "Training team members for Google Cloud. Top performer." },
+  { place: "Quark Software", where: "Dublin", detail: "Best-performing AE in an EMEA team." },
+  { place: "MarketStar", where: "Dublin", detail: "Top performer for Google Chrome, later for Faire." },
+  { place: "ActiveCampaign", where: "Dublin", detail: "Top BDR." },
+  { place: "National Pen, PayPal", where: "Dublin", detail: "Full-cycle sales. Flown to Denver and Ashburn for US sales training." },
 ];
 
 export function Founder() {
   return (
-    <section id="founder" className="paper rule-b">
-      <Container className="py-20 sm:py-28">
-        <SectionHead
-          label="About Harm"
-          title="How fifteen years across Europe became Structured Talent"
-        />
-
-        <div className="mt-16 grid gap-x-16 gap-y-14 lg:grid-cols-[1.1fr_0.9fr]">
-          {/* Running text, set at a book measure */}
+    <section id="founder" className="bg-white py-20 sm:py-28">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <div>
-            <div className="max-w-[62ch] space-y-6 text-[1.0625rem] leading-[1.8] text-pretty text-[color:var(--color-body)] sm:text-[1.125rem]">
+            {/* Dublin, where the business is registered and run from */}
+            <Figure src="/img-terrace.webp" ratio="aspect-[4/3]" />
+            <p className="mt-4 text-[0.875rem] leading-[1.6] text-[color:var(--color-mute)]">
+              Structured Talent is run from Dublin 8, licensed by the WRC under
+              employment agency licence EA 5660.
+            </p>
+          </div>
+
+          <div>
+            <SectionHead
+              eyebrow="About Harm"
+              title="How fifteen years across Europe became Structured Talent"
+            />
+
+            <div className="mt-7 max-w-[60ch] space-y-5 text-[1.0625rem] leading-[1.75] text-pretty text-[color:var(--color-body)]">
               <p>
-                It started with numbers, not sales. I grew up in Uelzen in northern
-                Germany and studied statistics and accounting in Halle, in the
-                former East. Not the obvious launchpad for a sales career, but it
-                left me something I use every day: I look for patterns, and I
-                treat every word in a cold email as a variable that is either
+                It started with numbers, not sales. I grew up in Uelzen in
+                northern Germany and studied statistics and accounting in Halle,
+                in the former East. Not the obvious launchpad for a sales career,
+                but it left me something I use every day: I look for patterns, and
+                I treat every word in a cold email as a variable that is either
                 pulling its weight or it isn&rsquo;t.
               </p>
               <p>
@@ -44,91 +51,42 @@ export function Founder() {
               </p>
             </div>
 
-            <figure className="mt-10 max-w-[38ch] border-l border-[color:var(--color-gold-500)] pl-5">
-              <blockquote className="text-[1.1875rem] leading-[1.6] text-[color:var(--color-body)]">
-                Every word in a cold email is a variable. My job is to know which
-                ones move the number.
-              </blockquote>
-            </figure>
+            <blockquote className="mt-8 border-l-2 border-[color:var(--color-brass-500)] pl-5 text-[1.125rem] leading-[1.6] text-[color:var(--color-ink)]">
+              Every word in a cold email is a variable. My job is to know which
+              ones move the number.
+            </blockquote>
 
-            <div className="rule-t mt-12 flex flex-wrap items-center gap-x-8 gap-y-5 pt-7">
-              <div className="flex items-center gap-4">
-                <Image
-                  src="/harm-avatar.webp"
-                  alt=""
-                  aria-hidden="true"
-                  width={44}
-                  height={44}
-                  className="h-11 w-11 object-cover grayscale-[0.2]"
-                />
-                <div>
-                  <p className="text-[1.0625rem] text-[color:var(--color-ink-900)]">
-                    Harm Linnecke
-                  </p>
-                  <p className="label">Dublin 8 · DACH and EMEA</p>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-x-7 gap-y-3">
-                <a
-                  href={site.linkedin}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="link text-[1rem]"
-                >
-                  16k on LinkedIn
-                </a>
-                <a
-                  href={site.book}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  className="link text-[1rem]"
-                >
-                  Structured Prospecting
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* The record */}
-          <div>
-            <p className="label rule-b pb-3">Track record</p>
-
-            <dl className="mt-2">
-              {track.map((t) => (
-                <div
-                  key={t.place}
-                  className="border-b border-[color:var(--color-rule-soft)] py-5"
-                >
-                  <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1">
-                    <dt className="title text-[1.1875rem]">{t.place}</dt>
-                    <span className="label">{t.years}</span>
+            <div className="mt-10">
+              <p className="eyebrow">Track record</p>
+              <dl className="mt-5 border-t border-[color:var(--color-line)]">
+                {track.map((t) => (
+                  <div
+                    key={t.place}
+                    className="grid gap-x-6 gap-y-1 border-b border-[color:var(--color-line)] py-4 sm:grid-cols-[1fr_auto]"
+                  >
+                    <div>
+                      <dt className="text-[0.9375rem] font-medium text-[color:var(--color-ink)]">
+                        {t.place}
+                      </dt>
+                      <dd className="mt-1 text-[0.875rem] leading-[1.55] text-[color:var(--color-mute)]">
+                        {t.detail}
+                      </dd>
+                    </div>
+                    <span className="text-[0.8125rem] text-[color:var(--color-mute)] sm:text-right">
+                      {t.where}
+                    </span>
                   </div>
-                  <dd className="mt-1.5 max-w-[46ch] text-[0.9375rem] leading-[1.6] text-[color:var(--color-mute)]">
-                    {t.detail}
-                  </dd>
-                </div>
-              ))}
-            </dl>
+                ))}
+              </dl>
+            </div>
 
-            <p className="mt-6 max-w-[46ch] text-[0.9375rem] leading-[1.7] text-[color:var(--color-mute)]">
-              Sectors: SaaS and scaling IT, fintech, outsourcing, gaming, global
-              services. Author of{" "}
-              <a
-                href={site.book}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="link"
-              >
-                Structured Prospecting
-              </a>
-              , Amazon #1 in Telemarketing, Ireland 2026.
-            </p>
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+              <TextLink href={site.linkedin}>16k followers on LinkedIn</TextLink>
+              <TextLink href={site.book}>Structured Prospecting, Amazon #1</TextLink>
+            </div>
           </div>
         </div>
       </Container>
-
-      <Band src="/img-terrace.webp" />
     </section>
   );
 }

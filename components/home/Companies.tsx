@@ -1,25 +1,40 @@
-import { SectionHead, Container, Action, Band } from "@/components/ui";
+import { SectionHead, Container, Button, TextLink, Figure } from "@/components/ui";
 import { site } from "@/lib/site";
 
 const services = [
   {
-    n: "1",
+    n: "01",
     title: "Sales hiring, in-market",
     body: "Native-fluency BDRs, SDRs and AEs across the US, UK, Ireland, Spain and Germany, screened the way a sales leader would screen them.",
+    points: [
+      "Matched to the market, not just the CV",
+      "Contingency, exclusive or retained",
+      "From a first hire to a full team",
+    ],
     cta: "Talk about a role",
     href: site.booking.hiring,
   },
   {
-    n: "2",
+    n: "02",
     title: "A custom sales playbook",
     body: "Sequences and cadences written for the market in its own language, rather than translated from a US template.",
+    points: [
+      "Fourteen sections, written from scratch",
+      "Market-native sequences and cadences",
+      "Battlecards and culture pages per market",
+    ],
     cta: "Explore the playbook",
     href: site.pages.playbookHub,
   },
   {
-    n: "3",
-    title: "Fractional recruiter, DACH and EMEA",
-    body: "An embedded recruiter one to two days a week, owning sourcing, screening and pipeline as part of your team. Three-month minimum, then rolling.",
+    n: "03",
+    title: "Fractional recruiter",
+    body: "An embedded recruiter one to two days a week, owning sourcing, screening and pipeline as part of your team.",
+    points: [
+      "One to two days a week",
+      "Three-month minimum, then rolling",
+      "A sales-native recruiter in the seat",
+    ],
     cta: "Discuss fractional",
     href: site.booking.fractional,
   },
@@ -48,23 +63,24 @@ const models = [
 
 export function Companies() {
   return (
-    <section id="companies" className="bg-[color:var(--color-ink-900)]">
-      <Container className="py-16 sm:py-20">
-        <SectionHead
-          label="For companies"
-          tone="light"
-          title="Most teams don't lose Europe on product. They lose it on who they hire and how they sell."
-          standfirst="I work on both. The people first, then the message they carry. And I sold in these markets myself, so I am not guessing at either."
-        />
+    <section id="companies" className="bg-[color:var(--color-ink-900)] py-20 sm:py-28">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:gap-16">
+          <SectionHead
+            eyebrow="For companies"
+            tone="dark"
+            title="Most teams don't lose Europe on product. They lose it on who they hire and how they sell."
+            lead="I work on both. The people first, then the message they carry. And I sold in these markets myself, so I am not guessing at either."
+          />
+          {/* Where their next European team will actually sit */}
+          <Figure src="/img-glass.webp" ratio="aspect-[5/4]" />
+        </div>
 
-        {/* Where it usually goes wrong */}
-        <div className="mt-16 grid gap-x-14 sm:grid-cols-3">
+        <div className="mt-20 grid gap-x-12 gap-y-8 border-t border-[color:var(--color-line-dark)] pt-10 sm:grid-cols-3">
           {mistakes.map((m) => (
-            <div key={m.t} className="rule-t-dark py-6">
-              <h3 className="title text-[1.125rem] text-[color:var(--color-paper-50)]">
-                {m.t}
-              </h3>
-              <p className="mt-2.5 text-[1rem] leading-[1.7] text-[color:var(--color-sand-300)]">
+            <div key={m.t}>
+              <h3 className="h3 on-dark text-[1.0625rem]">{m.t}</h3>
+              <p className="mt-2.5 text-[0.9375rem] leading-[1.65] text-[color:var(--color-onink-mute)]">
                 {m.d}
               </p>
             </div>
@@ -73,70 +89,72 @@ export function Companies() {
 
         {/* Three services */}
         <div className="mt-20">
-          <p className="label-light rule-b-dark pb-3">Three ways to work together</p>
-
-          <ol>
+          <p className="eyebrow-dark">Three ways to work together</p>
+          <div className="mt-8 grid gap-px bg-[color:var(--color-line-dark)] lg:grid-cols-3">
             {services.map((s) => (
-              <li
+              <article
                 key={s.n}
-                className="rule-b-dark grid gap-x-10 gap-y-4 py-9 sm:grid-cols-[2rem_1fr] lg:grid-cols-[2rem_19rem_1fr]"
+                className="flex flex-col bg-[color:var(--color-ink-900)] p-8 transition-colors duration-300 hover:bg-[color:var(--color-ink-800)] sm:p-9"
               >
-                <span className="tnum text-[1.125rem] text-[color:var(--color-gold-400)]">
+                <span className="tnum text-[0.875rem] font-medium text-[color:var(--color-brass-400)]">
                   {s.n}
                 </span>
-                <h3 className="title text-[clamp(1.375rem,2.4vw,1.75rem)] text-[color:var(--color-paper-50)]">
-                  {s.title}
-                </h3>
-                <div>
-                  <p className="max-w-[56ch] text-[1.0625rem] leading-[1.75] text-pretty text-[color:var(--color-sand-300)]">
-                    {s.body}
-                  </p>
-                  <a
-                    href={s.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="mt-4 inline-block border-b border-[color:var(--color-gold-400)]/70 pb-1 text-[1rem] text-[color:var(--color-paper-50)] transition-colors hover:border-[color:var(--color-paper-50)]"
-                  >
+                <h3 className="h3 on-dark mt-4 text-[1.375rem]">{s.title}</h3>
+                <p className="mt-3 text-[0.9375rem] leading-[1.7] text-[color:var(--color-onink-body)]">
+                  {s.body}
+                </p>
+                <ul className="mt-6 flex-1 space-y-2.5">
+                  {s.points.map((pt) => (
+                    <li
+                      key={pt}
+                      className="flex gap-3 text-[0.875rem] text-[color:var(--color-onink-mute)]"
+                    >
+                      <span aria-hidden="true" className="text-[color:var(--color-brass-400)]">
+                        —
+                      </span>
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8">
+                  <TextLink href={s.href} tone="dark">
                     {s.cta}
-                  </a>
+                  </TextLink>
                 </div>
-              </li>
+              </article>
             ))}
-          </ol>
+          </div>
         </div>
 
-        <Band src="/img-grid.webp" className="mt-16" />
-
-        {/* How engagements are structured */}
-        <div className="mt-16 grid gap-x-14 gap-y-8 lg:grid-cols-[0.75fr_1.25fr]">
-          <h3 className="title max-w-[18ch] text-[clamp(1.375rem,2.4vw,1.75rem)] text-[color:var(--color-paper-50)]">
+        {/* Engagement models */}
+        <div className="mt-16 grid gap-x-14 gap-y-8 border-t border-[color:var(--color-line-dark)] pt-10 lg:grid-cols-[0.75fr_1.25fr]">
+          <h3 className="h3 on-dark max-w-[18ch] text-[1.375rem]">
             Most clients start with one role and grow it from there
           </h3>
-          <dl className="grid gap-x-12 sm:grid-cols-3">
+          <dl className="grid gap-8 sm:grid-cols-3">
             {models.map((m) => (
-              <div key={m.t} className="rule-t-dark py-5">
-                <dt className="title text-[1.0625rem] text-[color:var(--color-paper-50)]">
-                  {m.t}
-                </dt>
-                <dd className="label-light mt-2">{m.d}</dd>
+              <div key={m.t}>
+                <dt className="text-[0.9375rem] font-medium text-white">{m.t}</dt>
+                <dd className="mt-2 text-[0.875rem] leading-[1.6] text-[color:var(--color-onink-mute)]">
+                  {m.d}
+                </dd>
               </div>
             ))}
           </dl>
         </div>
 
-        {/* Two intents, two calendars. Keeping them apart is unusual and right. */}
-        <div className="mt-12 flex flex-col items-start gap-x-10 gap-y-6 sm:flex-row sm:items-center">
-          <Action href={site.booking.hiring} tone="paper">
+        <div className="mt-12 flex flex-col items-start gap-x-8 gap-y-5 sm:flex-row sm:items-center">
+          <Button href={site.booking.hiring} tone="invert">
             Book a hiring call
-          </Action>
-          <Action href={site.booking.dach} tone="quiet-light">
+          </Button>
+          <Button href={site.booking.dach} tone="outline-dark">
             Or a DACH strategy session
-          </Action>
+          </Button>
+          <p className="text-[0.875rem] text-[color:var(--color-onink-mute)]">
+            Thirty minutes either way. Fees are set out in writing before anything
+            starts.
+          </p>
         </div>
-        <p className="label-light mt-5 max-w-[62ch]">
-          Thirty minutes either way, no obligation. Fees depend on the role and
-          are set out in writing before anything starts.
-        </p>
       </Container>
     </section>
   );

@@ -1,21 +1,10 @@
 import type { Metadata } from "next";
-import { Newsreader } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StructuredData } from "@/components/StructuredData";
 import { site } from "@/lib/site";
-
-/* One reading face for the whole page, display and body both. Newsreader was
-   drawn for screen text, so it holds up at 17px, and setting the body in it is
-   the difference between a document and a landing page. */
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["300", "400", "500"],
-  style: ["normal", "italic"],
-});
 
 /**
  * The audit's first three findings were all metadata: a duplicate title tag, a
@@ -62,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} h-full`}
+      className={`${GeistSans.variable} h-full`}
       data-scroll-behavior="smooth"
     >
       <body className="flex min-h-full flex-col">

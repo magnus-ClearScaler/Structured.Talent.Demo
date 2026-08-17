@@ -10,25 +10,26 @@ Linnecke. Front page only.
 
 ## The design
 
-Restrained and plain, because that is Harm's register. His own LinkedIn headline
-reads "Business Development@ Google Chrome | Fitness & Cycling Enthusiast |
-Sales Mentor", and his site says "No forms, no funnels. Just email me directly."
+Modern, dark-led and high contrast. The previous pass was set in cream and a
+serif and read as newsprint; this one is meant to read as a firm.
 
-- **One typeface.** Newsreader sets the display and the body. No second display
-  face, no mono for labels.
-- **Headings do not change font or colour halfway through a sentence.** One
-  face, one weight, one colour, all the way down.
-- **Labels are plain small text in sentence case** — not tracked-out uppercase,
-  not a coloured eyebrow chip.
-- **Rules instead of boxes.** The markets, the services, the steps, the ledger
-  and the FAQ are all ruled lists with hanging labels.
-- **Two grounds, one metal.** Paper and ink carry the page; gold is a hairline,
-  a link underline and a step number.
-- **One photographic treatment.** The four stock photographs are greyscaled,
-  given mild contrast and then mapped between the page's ink and paper, so they
-  read as one commissioned set rather than four downloads.
-- **Copy is his.** Where he already had a line, his wording stands, contractions
-  included. The standfirst is first person because he writes in first person.
+- **Near-black and true white.** Two grounds, no cream, no sepia. The only
+  tinted surface is a light neutral grey used to separate two adjacent light
+  sections.
+- **Geist Sans throughout**, tight tracking, medium weights on headings. One
+  family; Geist Mono appears once, inside the sample email, where a monospaced
+  face is what the artefact would actually use.
+- **Brass, not gold.** His accent taken deeper so it holds on both grounds
+  without going yellow. Used for eyebrows, numerals and link arrows only.
+- **Sharp corners everywhere.** No rounded pills, no gradients, no glow.
+- **Photography is relevant to its section**, graded to a cool near-monochrome
+  so nothing fights the palette: a European street where the candidate roles
+  sit, an office facade where the company teams sit, Georgian Dublin beside the
+  licence line. His portrait is the only image left in colour, because it is
+  the only one that is actually him.
+- **The playbook section shows the product, not a stock desk.** A rendered
+  section of the thing itself: a real German first-touch email, correctly
+  formal, with the reasoning printed underneath.
 
 ## Structure
 

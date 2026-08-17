@@ -2,126 +2,139 @@
 
 @theme {
   /* ── Structured Talent ─────────────────────────────────────────────
-     One face, two grounds, one metal. Paper and ink carry the page; the
-     gold is a hairline and a link, never a second colour inside a
-     sentence. Read off the live site and taken warmer and deeper. */
+     Near-black, true neutral white, one metal. The previous palette was
+     cream and sepia, which reads as newsprint; this one reads as a firm.
+     The gold is his, taken to a deeper brass so it can sit on both
+     grounds without turning yellow. */
 
-  --color-ink-950: #0c0a08;
-  --color-ink-900: #14110e;   /* the ground for dark sections */
-  --color-ink-800: #201a14;
-  --color-ink-700: #352c22;
+  --color-ink-950: #08090a;   /* deepest ground */
+  --color-ink-900: #0d0f11;   /* dark sections */
+  --color-ink-800: #16181c;   /* raised surfaces on dark */
+  --color-ink-700: #1e2127;
 
-  --color-gold-700: #6f5519;
-  --color-gold-600: #8a6a22;
-  --color-gold-500: #a9863a;
-  --color-gold-400: #c9a227;
-  --color-gold-300: #d8bd72;
+  --color-line-dark: #24272d; /* hairlines on dark */
+  --color-line:      #e3e3e1; /* hairlines on light */
+  --color-line-soft: #eeeeec;
 
-  --color-sand-400: #9d8e6d;
-  --color-sand-300: #bdaf90;
-  --color-sand-200: #d5c9b1;
+  --color-surface:   #ffffff;
+  --color-surface-2: #f5f5f3; /* the only tinted light ground */
 
-  --color-paper-200: #e6dac2;
-  --color-paper-100: #ede2ce;
-  --color-paper-50:  #f5eddf;
+  --color-brass-700: #8a6519;  /* small brass text on white — WCAG AA */
+  --color-brass-600: #a97d24;
+  --color-brass-500: #c2953b;  /* the mark */
+  --color-brass-400: #d7ac55;  /* brass on ink */
+  --color-brass-300: #e6c884;
 
-  --color-rule:      #d7c9ac;
-  --color-rule-soft: #e4d8bf;
-  --color-rule-dark: #2b2319;
+  --color-ink:   #0d0f11;      /* headings on light */
+  --color-body:  #45484f;      /* body on light */
+  --color-mute:  #6c7078;      /* meta on light */
+  --color-onink:      #f6f7f8; /* headings on dark */
+  --color-onink-body: #a9aeb6; /* body on dark */
+  --color-onink-mute: #7d838d;
 
-  --color-body: #443c31;
-  --color-mute: #6a5f4f;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
-  /* One family for the whole site. A second display face, a mono for
-     labels and a gold italic clause inside a headline are three different
-     ways of saying the same thing: look how designed this is. */
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  --shadow-card: 0 1px 2px rgba(8, 9, 10, 0.04), 0 12px 32px -20px rgba(8, 9, 10, 0.35);
+  --shadow-lift: 0 2px 4px rgba(8, 9, 10, 0.05), 0 28px 60px -32px rgba(8, 9, 10, 0.5);
 }
 
 html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
-  scroll-padding-top: 4.5rem;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--color-paper-50);
+  background: var(--color-surface);
   color: var(--color-body);
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  font-synthesis-weight: none;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
 }
 
-::selection {
-  background: var(--color-ink-900);
-  color: var(--color-paper-50);
-}
+::selection { background: var(--color-ink-900); color: #fff; }
 
 :where(a, button, input, select, textarea, summary):focus-visible {
-  outline: 1px solid var(--color-gold-600);
-  outline-offset: 4px;
+  outline: 2px solid var(--color-brass-500);
+  outline-offset: 3px;
 }
 
 .text-balance { text-wrap: balance; }
 .text-pretty  { text-wrap: pretty; }
 
 @layer components {
-  /* Headings are one face, one weight, one colour, all the way down. */
+  /* Display and headings: one family, tight, medium weight. Nothing
+     changes typeface or colour halfway through a sentence. */
   .display {
-    font-weight: 400;
-    letter-spacing: -0.022em;
-    line-height: 1.04;
-    color: var(--color-ink-900);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    color: var(--color-ink);
   }
-  .title {
-    font-weight: 400;
-    letter-spacing: -0.015em;
-    line-height: 1.15;
-    color: var(--color-ink-900);
+  .h2 {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-ink);
   }
+  .h3 {
+    font-weight: 550;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--color-ink);
+  }
+  .on-dark { color: var(--color-onink); }
 
-  /* A label is small text in the same face. Not uppercase, not tracked
-     out, not a second typeface pretending to be a system. */
-  .label {
-    font-size: 0.9375rem;
-    line-height: 1.5;
-    color: var(--color-mute);
+  /* One small-label style. Sentence case, medium, brass. */
+  .eyebrow {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--color-brass-700);
   }
-  .label-light {
-    font-size: 0.9375rem;
-    line-height: 1.5;
-    color: var(--color-sand-400);
+  .eyebrow-dark {
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--color-brass-400);
+  }
+  .lead {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-body);
+  }
+  .lead-dark {
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    color: var(--color-onink-body);
   }
   .tnum { font-variant-numeric: tabular-nums; }
 }
 
-/* Paper. A very slight unevenness, nothing that announces itself. */
-.paper {
+/* Hairline grid used behind the dark hero. Structure, not decoration. */
+.grid-lines {
   background-image:
-    radial-gradient(115% 80% at 12% -10%, rgba(154, 123, 46, 0.045), transparent 55%),
-    radial-gradient(100% 70% at 92% 4%, rgba(120, 105, 74, 0.045), transparent 52%);
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 6rem 6rem;
 }
 
-/* Rules. The page is built out of these rather than out of boxes. */
-.rule-t { border-top: 1px solid var(--color-rule); }
-.rule-b { border-bottom: 1px solid var(--color-rule); }
-.rule-t-dark { border-top: 1px solid var(--color-rule-dark); }
-.rule-b-dark { border-bottom: 1px solid var(--color-rule-dark); }
-
-/* Links inside running text, set the way a book would set them. */
-.link {
-  color: var(--color-ink-900);
-  text-decoration: underline;
-  text-decoration-color: var(--color-gold-500);
-  text-underline-offset: 4px;
-  text-decoration-thickness: 1px;
-  transition: text-decoration-color 0.2s ease;
+/* Photographs are graded to a cool near-monochrome before they ship, so
+   nothing here fights the palette. This just seats them on the ground. */
+.photo-dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    var(--color-ink-950) 0%,
+    rgba(8, 9, 10, 0.55) 38%,
+    rgba(8, 9, 10, 0.12) 100%
+  );
 }
-.link:hover { text-decoration-color: var(--color-ink-900); }
 
-.marquee-track { animation: marquee 58s linear infinite; }
+.marquee-track { animation: marquee 60s linear infinite; }
 @keyframes marquee {
   from { transform: translate3d(0, 0, 0); }
   to   { transform: translate3d(-50%, 0, 0); }

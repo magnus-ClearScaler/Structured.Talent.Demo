@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Container, Action } from "@/components/ui";
+import { Container, Button } from "@/components/ui";
 import { site } from "@/lib/site";
 
 /**
@@ -88,16 +88,16 @@ export function CostFunnel() {
   }
 
   return (
-    <section id="cost" className="paper rule-b">
-      <Container className="py-20 sm:py-28">
-        <div className="grid gap-x-16 gap-y-12 lg:grid-cols-[0.85fr_1.15fr]">
+    <section id="cost" className="bg-[color:var(--color-surface-2)] py-20 sm:py-28">
+      <Container>
+        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
           {/* The argument */}
           <div>
-            <p className="label">Before you write the job ad</p>
-            <h2 className="display mt-3 max-w-[13ch] text-[clamp(1.875rem,4vw,3rem)]">
+            <p className="eyebrow">Before you write the job ad</p>
+            <h2 className="h2 mt-4 max-w-[13ch] text-[clamp(2rem,4.2vw,3.25rem)]">
               The salary is the small number.
             </h2>
-            <p className="mt-8 max-w-[42ch] text-[1.0625rem] leading-[1.8] text-pretty text-[color:var(--color-body)]">
+            <p className="lead mt-6 max-w-[44ch] text-pretty">
               Most teams budget an SDR by their base salary. The real figure sits
               well above it once employer costs, tooling, ramp, management time
               and the odds of getting it wrong are counted. Three questions, and
@@ -106,63 +106,63 @@ export function CostFunnel() {
           </div>
 
           {/* The instrument */}
-          <div className="rule-t pt-8">
+          <div className="border-t border-[color:var(--color-ink)] bg-white p-8 shadow-[var(--shadow-card)] sm:p-10">
             {!done ? (
               <div>
                 <div className="flex items-baseline justify-between gap-6">
-                  <p className="label">Question {step + 1} of {questions.length}</p>
+                  <p className="text-[0.875rem] text-[color:var(--color-mute)]">Question {step + 1} of {questions.length}</p>
                   {step > 0 ? (
                     <button
                       type="button"
                       onClick={back}
-                      className="label text-[color:var(--color-gold-700)] transition-colors hover:text-[color:var(--color-ink-900)]"
+                      className="text-[0.875rem] font-medium text-[color:var(--color-brass-700)] transition-colors hover:text-[color:var(--color-ink)]"
                     >
                       Back
                     </button>
                   ) : null}
                 </div>
 
-                <h3 className="title mt-6 max-w-[20ch] text-[clamp(1.5rem,3vw,2.25rem)]">
+                <h3 className="h3 mt-5 max-w-[22ch] text-[clamp(1.375rem,2.6vw,1.875rem)]">
                   {questions[step].q}
                 </h3>
 
                 <ul className="mt-9">
                   {questions[step].options.map((o) => (
-                    <li key={o.label} className="rule-t">
+                    <li key={o.label} className="border-t border-[color:var(--color-line)]">
                       <button
                         type="button"
                         onClick={() => pick(o.v)}
                         className="group flex w-full items-baseline justify-between gap-6 py-5 text-left"
                       >
-                        <span className="title text-[1.25rem] transition-colors group-hover:text-[color:var(--color-gold-700)]">
+                        <span className="text-[1.0625rem] font-medium text-[color:var(--color-ink)] transition-colors group-hover:text-[color:var(--color-brass-700)]">
                           {o.label}
                         </span>
-                        <span className="text-[1rem] text-[color:var(--color-gold-700)] transition-transform duration-200 group-hover:translate-x-1">
+                        <span className="text-[1rem] text-[color:var(--color-brass-600)] transition-transform duration-200 group-hover:translate-x-1">
                           →
                         </span>
                       </button>
                     </li>
                   ))}
-                  <li className="rule-t" />
+                  <li className="border-t border-[color:var(--color-line)]" />
                 </ul>
               </div>
             ) : (
               <div>
                 <div className="flex items-baseline justify-between gap-6">
-                  <p className="label">True first-year cost, per hire</p>
+                  <p className="text-[0.875rem] text-[color:var(--color-mute)]">True first-year cost, per hire</p>
                   <button
                     type="button"
                     onClick={reset}
-                    className="label text-[color:var(--color-gold-700)] transition-colors hover:text-[color:var(--color-ink-900)]"
+                    className="text-[0.875rem] font-medium text-[color:var(--color-brass-700)] transition-colors hover:text-[color:var(--color-ink)]"
                   >
                     Start again
                   </button>
                 </div>
 
-                <p className="display tnum mt-6 text-[clamp(3.25rem,10vw,6rem)] text-[color:var(--color-ink-900)]">
+                <p className="display tnum mt-5 text-[clamp(3rem,9vw,5rem)]">
                   {money(perHire)}
                 </p>
-                <p className="mt-4 max-w-[40ch] text-[1.1875rem] leading-[1.6] text-[color:var(--color-body)]">
+                <p className="mt-4 max-w-[42ch] text-[1.0625rem] leading-[1.6] text-[color:var(--color-body)]">
                   {(perHire / base).toFixed(1)}× the number you were going to put
                   in the job ad
                   {team > 1 ? (
@@ -178,7 +178,7 @@ export function CostFunnel() {
                   {lines.map((l) => (
                     <div
                       key={l.k}
-                      className="rule-t flex items-baseline justify-between gap-6 py-2.5"
+                      className="flex items-baseline justify-between gap-6 border-t border-[color:var(--color-line)] py-2.5"
                     >
                       <dt className="text-[1rem] text-[color:var(--color-body)]">{l.k}</dt>
                       <dd className="tnum text-[1rem] text-[color:var(--color-ink-900)]">
@@ -186,10 +186,10 @@ export function CostFunnel() {
                       </dd>
                     </div>
                   ))}
-                  <div className="rule-t" />
+                  <div className="border-t border-[color:var(--color-line)]" />
                 </dl>
 
-                <p className="mt-8 max-w-[46ch] text-[1.0625rem] leading-[1.75] text-[color:var(--color-body)]">
+                <p className="mt-8 max-w-[48ch] text-[1rem] leading-[1.7] text-[color:var(--color-body)]">
                   The biggest cost is not on the list. It is{" "}
                   the wrong hire. Get the first
                   one right and ramp, management drag and mis-hire risk all shrink
@@ -197,12 +197,10 @@ export function CostFunnel() {
                 </p>
 
                 <div className="mt-8">
-                  <Action href={site.booking.hiring} tone="ink">
-                    Get the first one right
-                  </Action>
+                  <Button href={site.booking.hiring}>Get the first one right</Button>
                 </div>
 
-                <p className="mt-8 max-w-[62ch] text-[0.8125rem] leading-[1.75] text-[color:var(--color-mute)]">
+                <p className="mt-8 max-w-[64ch] text-[0.8125rem] leading-[1.7] text-[color:var(--color-mute)]">
                   Assumes 20% employer on-costs, {money(TOOLING)}{" "}of tooling and
                   data per head, a four-month ramp at half productivity, and 15%
                   of a manager&rsquo;s week on coaching. The mis-hire line is
